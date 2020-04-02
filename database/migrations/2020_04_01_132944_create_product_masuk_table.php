@@ -17,7 +17,8 @@ class CreateProductMasukTable extends Migration
             $table->increments('id');
             $table->integer('product_id')->unsigned();
             $table->integer('supplier_id')->unsigned();
-            $table->integer('qty');
+            $table->integer('jumlah');
+            $table->string('pembayaran');
             $table->date('tanggal');
             $table->timestamps();
 
@@ -33,6 +34,6 @@ class CreateProductMasukTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_keluar');
+        Schema::dropIfExists('product_masuk');
     }
 }

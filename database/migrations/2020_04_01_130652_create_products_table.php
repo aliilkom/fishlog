@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
 
             $table->string('nama');
             $table->string('sku')->nullable();
+            $table->integer('jumlah')->nullable();
             $table->string('satuan');
             $table->string('spesifikasi')->nullable();
             $table->string('image')->nullable();

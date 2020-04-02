@@ -58,14 +58,15 @@ class ProductMasukController extends Controller
         $this->validate($request, [
             'product_id'     => 'required',
             'supplier_id'    => 'required',
-            'qty'            => 'required',
+            'jumlah'         => 'required',
+            'pembayaran'     => 'required',
             'tanggal'        => 'required'
         ]);
 
         Product_Masuk::create($request->all());
 
         $product = Product::findOrFail($request->product_id);
-        $product->qty += $request->qty;
+        $product->jumlah += $request->jumlah;
         $product->save();
 
         return response()->json([
@@ -110,7 +111,8 @@ class ProductMasukController extends Controller
         $this->validate($request, [
             'product_id'     => 'required',
             'supplier_id'    => 'required',
-            'qty'            => 'required',
+            'jumlah'         => 'required',
+            'pembayaran'     => 'required',
             'tanggal'        => 'required'
         ]);
 
@@ -118,7 +120,7 @@ class ProductMasukController extends Controller
         $product_masuk->update($request->all());
 
         $product = Product::findOrFail($request->product_id);
-        $product->qty += $request->qty;
+        $product->jumlah += $request->jumlah;
         $product->update();
 
         return response()->json([

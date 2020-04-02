@@ -40,7 +40,8 @@
                     <!-- <th>No</th> -->
                     <th>Nama Barang</th>
                     <th>Penyuplai</th>
-                    <th>Kuantitas</th>
+                    <th>Jumlah</th>
+                    <th>Pembayaran</th>
                     <th>Tanggal Masuk</th>
                     <th>Opsi</th>
                 </tr>
@@ -71,7 +72,8 @@
                 <!-- <th>No</th> -->
                     <th>Nama Barang</th>
                     <th>Penyuplai</th>
-                    <th>Kuantitas</th>
+                    <th>Jumlah</th>
+                    <th>Pembayaran</th>
                     <th>Tanggal Masuk</th>
                     <th>Export Invoice</th>
                 </tr>
@@ -82,7 +84,8 @@
                     <!-- <td>{{ $i->id }}</td> -->
                     <td>{{ $i->product->nama }}</td>
                     <td>{{ $i->supplier->nama }}</td>
-                    <td>{{ $i->qty }}</td>
+                    <td>{{ $i->jumlah }}</td>
+                    <td>{{ $i->pembayaran }}</td>
                     <td>{{ $i->tanggal }}</td>
                     <td>
                         <a href="{{ route('exportPDF.productMasuk', [ 'id' => $i->id ]) }}" class="btn btn-sm btn-danger">Export PDF</a>
@@ -165,7 +168,8 @@
                 // {data: 'id', name: 'id'},
                 {data: 'products_name', name: 'products_name'},
                 {data: 'supplier_name', name: 'supplier_name'},
-                {data: 'qty', name: 'qty'},
+                {data: 'jumlah', name: 'jumlah'},
+                {data: 'pembayaran', name: 'pembayaran'},
                 {data: 'tanggal', name: 'tanggal'},
                 {data: 'action', name: 'action', orderable: false, searchable: false}
             ]
@@ -194,7 +198,8 @@
                     $('#id').val(data.id);
                     $('#product_id').val(data.product_id);
                     $('#supplier_id').val(data.supplier_id);
-                    $('#qty').val(data.qty);
+                    $('#jumlah').val(data.jumlah);
+                    $('#pembayaran').val(data.pembayaran);
                     $('#tanggal').val(data.tanggal);
                 },
                 error : function() {

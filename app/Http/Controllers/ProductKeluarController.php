@@ -56,17 +56,19 @@ class ProductKeluarController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-           'product_id'     => 'required',
-           'customer_id'    => 'required',
-           'qty'            => 'required',
-           'tanggal'           => 'required'
+            'product_id'     => 'required',
+            'customer_id'    => 'required',
+            'jumlah'         => 'required',
+            'pembayaran'     => 'required',
+            'tanggal'        => 'required'
         ]);
 
         Product_Keluar::create($request->all());
-
+        
         $product = Product::findOrFail($request->product_id);
-        $product->qty -= $request->qty;
+        $product->jumlah -= $request->jumlah;
         $product->save();
+       
 
         return response()->json([
             'success'    => true,
@@ -110,15 +112,16 @@ class ProductKeluarController extends Controller
         $this->validate($request, [
             'product_id'     => 'required',
             'customer_id'    => 'required',
-            'qty'            => 'required',
-            'tanggal'           => 'required'
+            'jumlah'         => 'required',
+            'pembayaran'     => 'required',
+            'tanggal'        => 'required'
         ]);
 
         $product_keluar = Product_Keluar::findOrFail($id);
         $product_keluar->update($request->all());
 
         $product = Product::findOrFail($request->product_id);
-        $product->qty -= $request->qty;
+        $product->jumlah -= $request->jumlah;
         $product->update();
 
         return response()->json([

@@ -17,7 +17,8 @@ class CreateProductKeluarTable extends Migration
             $table->increments('id');
             $table->integer('product_id')->unsigned();
             $table->integer('customer_id')->unsigned();
-            $table->integer('qty');
+            $table->integer('jumlah');
+            $table->string('pembayaran');
             $table->date('tanggal');
             $table->timestamps();
 

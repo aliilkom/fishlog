@@ -30,8 +30,14 @@
                         </div>
 
                         <div class="form-group">
-                            <label >Kuantitas</label>
-                            <input type="text" class="form-control" id="qty" name="qty" required>
+                            <label >Jumlah</label>
+                            <input type="number" class="form-control" id="jumlah" name="jumlah" required>
+                            <span class="help-block with-errors"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label >Pembayaran</label>
+                            <input type="text" class="form-control" id="pembayaran" name="pembayaran" required>
                             <span class="help-block with-errors"></span>
                         </div>
 

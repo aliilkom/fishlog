@@ -65,7 +65,7 @@ class CustomerController extends Controller
 
         return response()->json([
             'success'    => true,
-            'message'    => 'Pembeeli Ditambah'
+            'message'    => 'Pembeli Ditambah'
         ]);
 
     }

@@ -38,6 +38,12 @@
                         </div>
 
                         <div class="form-group">
+                            <label >Jumlah</label>
+                            <input type="number" class="form-control" id="jumlah" name="jumlah">
+                            <span class="help-block with-errors"></span>
+                        </div>
+
+                        <div class="form-group">
                             <label for="satuan">Satuan</label>
                             <select class="form-control" name="satuan" id="satuan" required>
                                 <option>Kg</option>

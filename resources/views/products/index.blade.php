@@ -31,6 +31,7 @@
                     <th>Lokasi Gudang</th>
                     <th>Nama Barang</th>
                     <th>SKU</th>
+                    <th>Jumlah</th>
                     <th>Satuan</th>
                     <th>Kategori</th>
                     <th>Merek</th>
@@ -82,6 +83,7 @@
                 {data: 'warehouse_nama', name: 'warehouse_nama'},
                 {data: 'nama', name: 'nama'},
                 {data: 'sku', name: 'sku'},
+                {data: 'jumlah', name: 'jumlah'},
                 {data: 'satuan', name: 'satuan'},
                 {data: 'category_name', name: 'category_name'},
                 {data: 'merk_name', name: 'merk_name'},
@@ -117,6 +119,7 @@
                     $('#warehouse_id').val(data.warehouse_id);
                     $('#nama').val(data.nama);
                     $('#sku').val(data.sku);
+                    $('#jumlah').val(data.jumlah);
                     $('#satuan').val(data.satuan);
                     $('#category_id').val(data.category_id);
                     $('#merk_id').val(data.merk_id);
