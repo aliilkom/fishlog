@@ -8,6 +8,7 @@ use App\Stockrentin;
 use App\Exports\ExportStockrentin;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Auth;
 use PDF;
 
 class StockrentinController extends Controller
@@ -23,15 +24,18 @@ class StockrentinController extends Controller
      */
     public function index()
     {
+        $id = Auth::id();
         $products = Product::orderBy('nama','ASC')
+            ->where('user_id', $id)
             ->get()
             ->pluck('nama','id');
 
         $renters = Renter::orderBy('nama','ASC')
+            ->where('user_id', $id)
             ->get()
             ->pluck('nama','id');
 
-        $invoice_data = Stockrentin::all();
+        $invoice_data = Stockrentin::all()->where('user_id', $id);
         return view('stockrentins.index', compact('products','renters', 'invoice_data'));
     }
 
@@ -147,7 +151,8 @@ class StockrentinController extends Controller
 
 
     public function apiStockrentins(){
-        $product = Stockrentin::all();
+        $id = Auth::id();
+        $product = Stockrentin::all()->where('user_id', $id);
 
         return Datatables::of($product)
             ->addColumn('products_name', function ($product){

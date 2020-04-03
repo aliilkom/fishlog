@@ -9,6 +9,7 @@ use App\Product;
 use App\Product_Keluar;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Auth;
 use PDF;
 
 
@@ -25,15 +26,18 @@ class ProductKeluarController extends Controller
      */
     public function index()
     {
+        $id = Auth::id();
         $products = Product::orderBy('nama','ASC')
+            ->where('user_id', $id)
             ->get()
             ->pluck('nama','id');
 
         $customers = Customer::orderBy('nama','ASC')
+            ->where('user_id', $id)
             ->get()
             ->pluck('nama','id');
 
-        $invoice_data = Product_Keluar::all();
+        $invoice_data = Product_Keluar::all()->where('user_id', $id);
         return view('product_keluar.index', compact('products','customers', 'invoice_data'));
     }
 
@@ -149,7 +153,8 @@ class ProductKeluarController extends Controller
 
 
     public function apiProductsOut(){
-        $product = Product_Keluar::all();
+        $id = Auth::id();
+        $product = Product_Keluar::all()->where('user_id', $id);
 
         return Datatables::of($product)
             ->addColumn('products_name', function ($product){

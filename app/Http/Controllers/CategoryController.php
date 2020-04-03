@@ -6,6 +6,7 @@ use App\Category;
 use App\Exports\ExportCategories;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Datatables;
+use Illuminate\Support\Facades\Auth;
 use PDF;
 
 class CategoryController extends Controller
@@ -119,7 +120,8 @@ class CategoryController extends Controller
 
     public function apiCategories()
     {
-        $categories = Category::all();
+        $id = Auth::id();
+        $categories = Category::all()->where('user_id', $id);
 
         return Datatables::of($categories)
             ->addColumn('action', function($categories){

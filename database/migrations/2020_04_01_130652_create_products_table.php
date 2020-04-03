@@ -15,7 +15,7 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
-
+            $table->integer('user_id')->unsigned();
             $table->integer('warehouse_id')->unsigned();
             $table->integer('category_id')->unsigned();
             $table->integer('merk_id')->unsigned();
@@ -29,7 +29,8 @@ class CreateProductsTable extends Migration
             $table->string('spesifikasi')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
-
+            
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('warehouse_id')->references('id')->on('warehouses')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('merk_id')->references('id')->on('merks')->onDelete('cascade');

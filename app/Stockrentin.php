@@ -6,17 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Stockrentin extends Model
 {
-    protected $fillable = ['product_id','renter_id','jumlahsrent', 'pembayaran','tanggal'];
+    protected $fillable = ['user_id', 'product_id','renter_id','jumlahsrent', 'pembayaran','tanggal'];
 
     protected $hidden = ['created_at','updated_at'];
 
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+    
     public function product()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo('App\Product');
     }
 
     public function renter()
     {
-        return $this->belongsTo(Renter::class);
+        return $this->belongsTo('App\Renter');
     }
 }

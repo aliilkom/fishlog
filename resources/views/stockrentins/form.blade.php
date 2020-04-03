@@ -48,6 +48,12 @@
                             <span class="help-block with-errors"></span>
                         </div>
 
+                        <div class="form-group">
+                            <!-- <label >ID Pemilik</label> -->
+                            <input type="hidden" class="form-control" id="user_id" name="user_id" value="{{Auth::user()->id}}" readonly>
+                            <span class="help-block with-errors"></span>
+                        </div>
+
                     </div>
                     <!-- /.box-body -->
 

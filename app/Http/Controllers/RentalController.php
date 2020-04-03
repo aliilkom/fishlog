@@ -160,7 +160,7 @@ class RentalController extends Controller
         ]);
     }
 
-    public function apiWarehouses(){
+    public function apiRentals(){
         $id = Auth::id();
         $warehouse = Warehouse::all()->where('user_id', $id);
 
@@ -177,8 +177,8 @@ class RentalController extends Controller
             ->addColumn('action', function($warehouse){
                 return 
                     // '<a href="#" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Show</a> ' .
-                    '<a onclick="editForm('. $warehouse->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Ubah</a> ' .
-                    '<a onclick="deleteData('. $warehouse->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
+                    '<a onclick="editForm('. $warehouse->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Rental</a> ';
+                    // '<a onclick="deleteData('. $warehouse->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
             })
             ->rawColumns(['user_name','show_photo','action'])->make(true);
 

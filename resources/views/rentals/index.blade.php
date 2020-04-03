@@ -32,7 +32,7 @@
                     <th>Biaya Sewa *(Hari)</th>
                     <th>Biaya Bongkar *(Hari)</th>
                     <th>Biaya Muat *(Hari)</th>
-                    <th>Gambar</th>
+                    <!-- <th>Gambar</th> -->
                     
                     <th>Opsi</th>
                 </tr>
@@ -75,7 +75,7 @@
         var table = $('#warehouses-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('api.warehouses') }}",
+            ajax: "{{ route('api.rentals') }}",
             columns: [
                 // {data: 'id', name: 'id'},
                 {data: 'nama', name: 'nama'},
@@ -83,7 +83,7 @@
                 {data: 'bybongkar', name: 'bybongkar'},
                 {data: 'bymuat', name: 'bymuat'},
                
-                {data: 'show_photo', name: 'show_photo'},
+                // {data: 'show_photo', name: 'show_photo'},
                 {data: 'action', name: 'action', orderable: false, searchable: false}
                 
             ]
@@ -107,7 +107,7 @@
                 dataType: "JSON",
                 success: function(data) {
                     $('#modal-form').modal('show');
-                    $('.modal-title').text('Ubah Rental Gudang');
+                    $('.modal-title').text('Rental Gudang');
 
                     $('#id').val(data.id);
                     $('#nama').val(data.nama);

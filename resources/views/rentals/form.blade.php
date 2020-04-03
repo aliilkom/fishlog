@@ -41,11 +41,11 @@
                             <span class="help-block with-errors"></span>
                         </div>
                         
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label >Gambar</label>
                             <input type="file" class="form-control" id="image" name="image" >
                             <span class="help-block with-errors"></span>
-                        </div>
+                        </div> -->
 
                         <!-- <div class="form-group">
                             <label >User</label>

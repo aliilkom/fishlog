@@ -23,15 +23,19 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $id = Auth::id();
         $warehouse = Warehouse::orderBy('nama','ASC')
+            ->where('user_id', $id)
             ->get()
             ->pluck('nama','id');
         
         $category = Category::orderBy('name','ASC')
+            ->where('user_id', $id) 
             ->get()
             ->pluck('name','id');
 
         $merk = Merk::orderBy('name','ASC')
+            ->where('user_id', $id)
             ->get()
             ->pluck('name','id');
 
@@ -211,8 +215,8 @@ class ProductController extends Controller
     }
 
     public function apiProducts(){
-       
-        $product = Product::all();
+        $id = Auth::id();
+        $product = Product::all()->where('user_id', $id);
 
         return Datatables::of($product)
             ->addColumn('warehouse_nama', function ($product){

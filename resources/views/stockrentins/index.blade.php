@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('dashboard')
-   Data Stok Masuk
+   Rental Stok Masuk
 @endsection
 
 @section('breadcrumb')
@@ -182,7 +182,7 @@
             $('input[name=_method]').val('POST');
             $('#modal-form').modal('show');
             $('#modal-form form')[0].reset();
-            $('.modal-title').text('Tambah Data Stok Keluar');
+            $('.modal-title').text('Tambah Rental Stok Keluar');
         }
 
         function editForm(id) {
@@ -195,7 +195,7 @@
                 dataType: "JSON",
                 success: function(data) {
                     $('#modal-form').modal('show');
-                    $('.modal-title').text('Ubah Data Stok Keluar');
+                    $('.modal-title').text('Ubah Rental Stok Keluar');
 
                     $('#id').val(data.id);
                     $('#product_id').val(data.product_id);

@@ -8,6 +8,7 @@ use App\Imports\SuppliersImport;
 use App\Supplier;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Auth;
 use Excel;
 use PDF;
 
@@ -155,7 +156,8 @@ class SupplierController extends Controller
 
     public function apiSuppliers()
     {
-        $suppliers = Supplier::all();
+        $id = Auth::id();
+        $suppliers = Supplier::all()->where('user_id', $id);
 
         return Datatables::of($suppliers)
             ->addColumn('show_photo', function($suppliers){

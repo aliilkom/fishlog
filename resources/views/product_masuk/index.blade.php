@@ -37,7 +37,7 @@
                 <tr>
                     <!-- <th>No</th> -->
                     <th>Nama Barang</th>
-                    <th>Penyewa</th>
+                    <th>Penyuplai</th>
                     <th>Jumlah</th>
                     <th>Pembayaran</th>
                     <th>Tanggal Masuk</th>

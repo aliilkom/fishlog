@@ -6,6 +6,7 @@ use App\Merk;
 use App\Exports\Exportmerek;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Datatables;
+use Illuminate\Support\Facades\Auth;
 use PDF;
 
 class MerkController extends Controller
@@ -119,7 +120,8 @@ class MerkController extends Controller
 
     public function apiMerks()
     {
-        $merek = Merk::all();
+        $id = Auth::id();
+        $merek = Merk::all()->where('user_id', $id);
 
         return Datatables::of($merek)
             ->addColumn('action', function($merek){

@@ -10,6 +10,7 @@ use App\Supplier;
 use PDF;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Auth;
 
 
 class ProductMasukController extends Controller
@@ -25,15 +26,18 @@ class ProductMasukController extends Controller
      */
     public function index()
     {
+        $id = Auth::id();
         $products = Product::orderBy('nama','ASC')
+            ->where('user_id', $id)
             ->get()
             ->pluck('nama','id');
 
         $suppliers = Supplier::orderBy('nama','ASC')
+            ->where('user_id', $id)
             ->get()
             ->pluck('nama','id');
 
-        $invoice_data = Product_Masuk::all();
+        $invoice_data = Product_Masuk::all()->where('user_id', $id);
         return view('product_masuk.index', compact('products','suppliers','invoice_data'));
     }
 
@@ -148,7 +152,8 @@ class ProductMasukController extends Controller
 
 
     public function apiProductsIn(){
-        $product = Product_Masuk::all();
+        $id = Auth::id();
+        $product = Product_Masuk::all()->where('user_id', $id);
 
         return Datatables::of($product)
             ->addColumn('products_name', function ($product){

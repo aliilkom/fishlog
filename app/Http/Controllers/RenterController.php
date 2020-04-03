@@ -8,6 +8,7 @@ use App\Exports\ExportRenters;
 use App\Imports\RentersImport;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Auth;
 use Excel;
 use PDF;
 
@@ -154,7 +155,8 @@ class RenterController extends Controller
 
     public function apiRenters()
     {
-        $Renter = Renter::all();
+        $id = Auth::id();
+        $Renter = Renter::all()->where('user_id', $id);
 
         return Datatables::of($Renter)
             ->addColumn('show_photo', function($Renter){

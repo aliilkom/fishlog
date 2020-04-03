@@ -8,6 +8,7 @@ use App\Exports\ExportCustomers;
 use App\Imports\CustomersImport;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Auth;
 use Excel;
 use PDF;
 
@@ -154,7 +155,8 @@ class CustomerController extends Controller
 
     public function apiCustomers()
     {
-        $customer = Customer::all();
+        $id = Auth::id();
+        $customer = Customer::all()->where('user_id', $id);
 
         return Datatables::of($customer)
             ->addColumn('show_photo', function($customer){

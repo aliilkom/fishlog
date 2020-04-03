@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('alamat');
             $table->string('hp');
             $table->enum('role',['admin', 'pemilik', 'manajer', 'pengelola'])->default('pemilik');
-            $table->string('image')->nullable();
+            $table->string('image')->default('fishlog.jpg');
             $table->rememberToken();
             $table->timestamps();
         });

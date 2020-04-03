@@ -8,17 +8,22 @@ class Product_Keluar extends Model
 {
     protected $table = 'product_keluar';
 
-    protected $fillable = ['product_id','customer_id','jumlah', 'pembayaran','tanggal'];
+    protected $fillable = ['user_id', 'product_id','customer_id','jumlah', 'pembayaran','tanggal'];
 
     protected $hidden = ['created_at','updated_at'];
 
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+    
     public function product()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo('App\Product');
     }
 
     public function customer()
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo('App\Customer');
     }
 }

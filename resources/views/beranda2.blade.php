@@ -21,7 +21,7 @@
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
-                <h3>{{ \App\Product::count() }}</h3>
+                <h3>{{ \App\Warehouse::where('user_id', Auth::id())->count() }}</h3>
 
                 <p>Rental</p>
             </div>
@@ -37,7 +37,7 @@
         <!-- small box -->
         <div class="small-box bg-orange">
             <div class="inner">
-                <h3>{{ \App\Product_Masuk::count() }}</h3>
+                <h3>{{ \App\Stockrentin::where('user_id', Auth::id())->count() }}</h3>
 
                 <p>Stok Masuk</p>
             </div>
@@ -53,7 +53,7 @@
         <!-- small box -->
         <div class="small-box bg-purple">
             <div class="inner">
-                <h3>{{ \App\Product_Keluar::count()  }}</h3>
+                <h3>{{ \App\Stockrentout::where('user_id', Auth::id())->count() }}</h3>
 
                 <p>Stok Keluar</p>
             </div>
@@ -69,7 +69,7 @@
         <!-- small box -->
         <div class="small-box bg-maroon">
             <div class="inner">
-                <h3>{{ \App\Renter::count() }}</h3>
+                <h3>{{ \App\Renter::where('user_id', Auth::id())->count() }}</h3>
 
                 <p>Penyewa</p>
             </div>
