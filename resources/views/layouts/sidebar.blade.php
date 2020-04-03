@@ -6,12 +6,12 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="{{ asset('user.png') }} " class="img-circle" alt="User Image">
+                <img src="{{ asset('/img/'. auth()->user()->image) }}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
                 <p>{{ \Auth::user()->name  }}</p>
                 <!-- Status -->
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                <h6 class="text-capitalize"></i>{{auth()->user()->role}}</h6>
             </div>
         </div>
 
@@ -35,7 +35,7 @@
                 <i class="glyphicon glyphicon-inbox"></i> <span>Manajemen Gudang</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i> </span> 
             </a>
             <ul class="treeview-menu">
-                <li class=""><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
+                <li class=""><a href="{{ url('beranda1') }}"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
                 <li class=""><a href="{{ route('gudang.index') }}"><i class="fa fa-truck"></i> <span>Data Gudang</span></a></li>
                 <li class=""><a href="{{ route('barang.index') }}"><i class="fa fa-cubes"></i> <span>Data Barang</span></a></li>
                 <li class=""><a href="{{ route('kategori.index') }}"><i class="fa fa-tags"></i> <span>Kategori Barang</span></a></li>
@@ -49,14 +49,14 @@
             
             <li class="treeview active menu-open">
             <a href="#">
-                <i class="fa fa-dollar"></i> <span>Rental Gudang</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i> </span> 
+                <i class="fa fa-dollar"></i> <span>Manajemen Rental</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i> </span> 
             </a>
                     <ul class="treeview-menu">
-                        <li class=""><a href="{{ url('/home') }}"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
-                        <li class=""><a href="#"><i class="fa fa-truck"></i> <span>Manajemen Rental</span></a></li>
-                        <li class=""><a href="#"><i class="fa fa-tags"></i> <span>Transaksi Rental</span></a></li>
-                        <li class=""><a href="#"><i class="fa fa-cubes"></i> <span>Data Penyewa</span></a></li>
-                        <li class=""><a href="#"><i class="fa fa-tags"></i> <span>Stok dan Tagihan</span></a></li>
+                        <li class=""><a href="{{ url('beranda2') }}"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
+                        <li class=""><a href="{{ route('rental.index') }}"><i class="fa fa-puzzle-piece"></i> <span>Rental Gudang</span></a></li>
+                        <li class=""><a href="{{ route('stokrentalmasuk.index') }}"><i class="fa fa-download"></i> <span>Stok Masuk</span></a></li>
+                        <li class=""><a href="{{ route('stokrentalkeluar.index') }}"><i class="fa fa-upload"></i> <span>Stok Keluar</span></a></li>
+                        <li class=""><a href="{{ route('penyewa.index') }}"><i class="fa fa-street-view"></i> <span>Data Penyewa</span></a></li>
                     </ul>
             </li>
             

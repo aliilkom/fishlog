@@ -5,7 +5,7 @@
 @endsection
 
 @section('breadcrumb')
-    <li><a href="{{ url('home') }}"><i class="fa fa-dashboard"></i> Beranda</a></li>
+    <li><a href="{{ url('beranda2') }}"><i class="fa fa-dashboard"></i>Rental Gudang</a></li>
     <li class="active">Stok Masuk</li>
 @endsection
 
@@ -22,15 +22,13 @@
 @section('content')
     <div class="box">
 
- 
+        
+
         <div class="box-header">
             <a onclick="addForm()" class="btn btn-primary" >Tambah</a>
             <a href="{{ route('exportPDF.productMasukAll') }}" class="btn btn-danger">PDF</a>
             <a href="{{ route('exportExcel.productMasukAll') }}" class="btn btn-success">Excel</a>
         </div>
-
-
-
 
         <!-- /.box-header -->
         <div class="box-body">
@@ -39,7 +37,7 @@
                 <tr>
                     <!-- <th>No</th> -->
                     <th>Nama Barang</th>
-                    <th>Penyuplai</th>
+                    <th>Penyewa</th>
                     <th>Jumlah</th>
                     <th>Pembayaran</th>
                     <th>Tanggal Masuk</th>
@@ -52,19 +50,21 @@
         <!-- /.box-body -->
     </div>
 
+
+
     <div class="box col-md-6">
 
         <div class="box-header">
             <h3 class="box-title">Export Invoice</h3>
         </div>
 
-    {{--<div class="box-header">--}}
-    {{--<a onclick="addForm()" class="btn btn-primary" >Tambah</a>--}}
-    {{--<a href="{{ route('exportPDF.productKeluarAll') }}" class="btn btn-danger">PDF</a>--}}
-    {{--<a href="{{ route('exportExcel.productKeluarAll') }}" class="btn btn-success">Excel</a>--}}
-    {{--</div>--}}
+        {{--<div class="box-header">--}}
+            {{--<a onclick="addForm()" class="btn btn-primary" >Tambah</a>--}}
+            {{--<a href="{{ route('exportPDF.productMasukAll') }}" class="btn btn-danger">PDF</a>--}}
+            {{--<a href="{{ route('exportExcel.productMasukAll') }}" class="btn btn-success">Excel</a>--}}
+        {{--</div>--}}
 
-    <!-- /.box-header -->
+        <!-- /.box-header -->
         <div class="box-body">
             <table id="invoice" class="table table-striped">
                 <thead>
@@ -81,15 +81,15 @@
 
                 @foreach($invoice_data as $i)
                     <tbody>
-                    <!-- <td>{{ $i->id }}</td> -->
-                    <td>{{ $i->product->nama }}</td>
-                    <td>{{ $i->supplier->nama }}</td>
-                    <td>{{ $i->jumlah }}</td>
-                    <td>{{ $i->pembayaran }}</td>
-                    <td>{{ $i->tanggal }}</td>
-                    <td>
-                        <a href="{{ route('exportPDF.productMasuk', [ 'id' => $i->id ]) }}" class="btn btn-sm btn-danger">Export PDF</a>
-                    </td>
+                        <!-- <td>{{ $i->id }}</td> -->
+                        <td>{{ $i->product->nama }}</td>
+                        <td>{{ $i->supplier->nama }}</td>
+                        <td>{{ $i->jumlah }}</td>
+                        <td>{{ $i->pembayaran }}</td>
+                        <td>{{ $i->tanggal }}</td>
+                        <td>
+                            <a href="{{ route('exportPDF.productMasuk', [ 'id' => $i->id ]) }}" class="btn btn-sm btn-danger">Export PDF</a>
+                        </td>
                     </tbody>
                 @endforeach
             </table>
@@ -124,19 +124,21 @@
     {{-- Validator --}}
     <script src="{{ asset('assets/validator/validator.min.js') }}"></script>
 
-    {{--<script>--}}
-    {{--$(function () {--}}
-    {{--$('#items-table').DataTable()--}}
-    {{--$('#example2').DataTable({--}}
-    {{--'paging'      : true,--}}
-    {{--'lengthChange': false,--}}
-    {{--'searching'   : false,--}}
-    {{--'ordering'    : true,--}}
-    {{--'info'        : true,--}}
-    {{--'autoWidth'   : false--}}
-    {{--})--}}
-    {{--})--}}
-    {{--</script>--}}
+    <script>
+    $(function () {
+    // $('#items-table').DataTable()
+    $('#invoice').DataTable({
+    'paging'      : true,
+    'lengthChange': false,
+    'searching'   : false,
+    'ordering'    : true,
+    'info'        : true,
+    'autoWidth'   : false,
+    'processing'  : true,
+    // 'serverSide'  : true
+    })
+    })
+    </script>
 
     <script>
         $(function () {

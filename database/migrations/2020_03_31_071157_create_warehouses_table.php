@@ -22,6 +22,9 @@ class CreateWarehousesTable extends Migration
             $table->string('lokasi');
             $table->integer('ruang');
             $table->integer('kapasitas');
+            $table->integer('bysewa')->nullable();
+            $table->integer('bybongkar')->nullable();
+            $table->integer('bymuat')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
 

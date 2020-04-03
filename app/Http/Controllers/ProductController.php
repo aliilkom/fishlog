@@ -8,6 +8,7 @@ use App\Merk;
 use App\Product;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -210,6 +211,7 @@ class ProductController extends Controller
     }
 
     public function apiProducts(){
+       
         $product = Product::all();
 
         return Datatables::of($product)

@@ -21,8 +21,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function beranda1()
     {
-        return view('home');
+        return view('beranda1');
+    }
+    public function beranda2()
+    {
+        return view('beranda2');
     }
 }

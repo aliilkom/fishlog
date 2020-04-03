@@ -6,6 +6,7 @@ use App\User;
 use App\Warehouse;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Auth;
 
 class WarehouseController extends Controller
 {
@@ -23,7 +24,7 @@ class WarehouseController extends Controller
         $user = User::orderBy('name','ASC')
             ->get()
             ->pluck('name','id');
-
+            
         $warehouse = Warehouse::all();
         return view('warehouses.index', compact('user'));
     }
@@ -174,7 +175,8 @@ class WarehouseController extends Controller
     }
 
     public function apiWarehouses(){
-        $warehouse = Warehouse::all();
+        $id = Auth::id();
+        $warehouse = Warehouse::all()->where('user_id', $id);
 
         return Datatables::of($warehouse)
             ->addColumn('user_name', function ($warehouse){

@@ -20,6 +20,7 @@
                             <label >Nama Barang</label>
                             {!! Form::select('product_id', $products, null, ['class' => 'form-control select', 'placeholder' => '-- Choose Product --', 'id' => 'product_id', 'required']) !!}
                             <span class="help-block with-errors"></span>
+                            <a href="barang"> Tambah Barang</a>
                         </div>
 
                         <div class="form-group">

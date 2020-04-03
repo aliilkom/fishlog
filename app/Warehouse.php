@@ -6,12 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Warehouse extends Model
 {
-    protected $fillable = ['user_id','nama','pemilik','hp','lokasi', 'ruang', 'kapasitas', 'image'];
+    protected $fillable = ['user_id','nama','pemilik','hp','lokasi', 'ruang', 'kapasitas', 'bysewa', 'bybongkar', 'bymuat', 'image'];
 
     protected $hidden = ['created_at','updated_at'];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function product()
+    {
+        return $this->hasMany(Product::class);
     }
 }

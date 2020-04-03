@@ -1,6 +1,16 @@
 @extends('layouts.master')
 
+@section('dashboard')
+   Beranda
+@endsection
+
+@section('breadcrumb')
+    <li class="active"><a href="{{ url('home') }}"><i class="fa fa-dashboard"></i>Manajemen Gudang</a></li>
+@endsection
+
 @section('top')
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
 @endsection
 
 @section('content')

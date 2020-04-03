@@ -20,11 +20,12 @@
                             <label >Nama Barang</label>
                             {!! Form::select('product_id', $products, null, ['class' => 'form-control select', 'placeholder' => '-- Choose Product --', 'id' => 'product_id', 'required']) !!}
                             <span class="help-block with-errors"></span>
+                            <a href="barang"> Tambah Barang</a>
                         </div>
 
                         <div class="form-group">
                             <label >Penyuplai</label>
-                            {!! Form::select('supplier_id', $suppliers, null, ['class' => 'form-control select', 'placeholder' => '-- Choose Supplier --', 'id' => 'supplier_id', 'required']) !!}
+                            {!! Form::select('supplier_id', $suppliers, null, ['class' => 'form-control select', 'placeholder' => '-- Choose Renter --', 'id' => 'supplier_id', 'required']) !!}
                             <span class="help-block with-errors"></span>
                             <a href="penyuplai"> Tambah Penyuplai</a>
                         </div>
@@ -42,7 +43,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label >Tanggal Masuk</label>
+                            <label >Tanggal Keluar</label>
                             <input data-date-format='yyyy-mm-dd' type="text" class="form-control" id="tanggal" name="tanggal"   required>
                             <span class="help-block with-errors"></span>
                         </div>
@@ -53,8 +54,8 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
 
             </form>
