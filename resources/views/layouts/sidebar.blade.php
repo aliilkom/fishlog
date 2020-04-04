@@ -38,6 +38,7 @@
                 <li class=""><a href="{{ url('beranda1') }}"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
                 <li class=""><a href="{{ route('gudang.index') }}"><i class="fa fa-truck"></i> <span>Data Gudang</span></a></li>
                 <li class=""><a href="{{ route('barang.index') }}"><i class="fa fa-cubes"></i> <span>Data Barang</span></a></li>
+                <li class=""><a href="{{ route('barang.index') }}"><i class="fa fa-exchange"></i> <span>Pindah Barang</span></a></li>
                 <li class=""><a href="{{ route('kategori.index') }}"><i class="fa fa-tags"></i> <span>Kategori Barang</span></a></li>
                 <li class=""><a href="{{ route('merek.index') }}"><i class="fa fa-flag"></i> <span>Merek Barang</span></a></li>
                 <li class=""><a href="{{ route('stokmasuk.index') }}"><i class="fa fa-sign-in"></i> <span>Stok Masuk</span></a></li>
@@ -57,6 +58,7 @@
                         <li class=""><a href="{{ route('stokrentalmasuk.index') }}"><i class="fa fa-download"></i> <span>Stok Masuk</span></a></li>
                         <li class=""><a href="{{ route('stokrentalkeluar.index') }}"><i class="fa fa-upload"></i> <span>Stok Keluar</span></a></li>
                         <li class=""><a href="{{ route('penyewa.index') }}"><i class="fa fa-street-view"></i> <span>Data Penyewa</span></a></li>
+                        <li class=""><a href="{{ route('penyewa.index') }}"><i class="fa fa-money"></i> <span>Tagihan</span></a></li>
                     </ul>
             </li>
             

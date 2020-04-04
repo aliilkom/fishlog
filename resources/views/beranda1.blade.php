@@ -160,12 +160,70 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">5 Stok Barang Terbanyak</h3>
+                </div>
+                    <div class="box-body">
+                        <table id="products" class="table">
+                            <thead>
+                            <tr>
+                            <!-- <th>No</th> -->
+                                <th>Nama Barang</th>
+                                <th>Jumlah</th>
+                            </tr>
+                            </thead>
+                            @foreach($products as $p)
+                                <tbody>
+                                    <td>{{ $p->nama }}</td>
+                                    <td>{{ $p->jumlah }}</td>
+                                </tbody>
+                            @endforeach
+                        </table>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">5 Stok Keluar Terbanyak</h3>
+                </div>
+                    <div class="box-body">
+                        <table id="productouts" class="table">
+                            <thead>
+                            <tr>
+                            <!-- <th>No</th> -->
+                                <th>Nama Barang</th>
+                                <th>Jumlah</th>
+                            </tr>
+                            </thead>
+                            @foreach($productouts as $po)
+                                <tbody>
+                                    <td>{{ $po->product->nama }}</td>
+                                    <td>{{ $po->total }}</td>
+                                </tbody>
+                            @endforeach
+                        </table>
+                      
+                    </div>
+                </div>
+            </div>
+               
+    
 @endsection
 
 @section('top')
 @endsection
 
-
+<style>
+tbody:nth-child(n+7) {
+  display:none;
+}
+</style>
 
 
 

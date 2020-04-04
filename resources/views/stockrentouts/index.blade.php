@@ -5,7 +5,7 @@
 @endsection
 
 @section('breadcrumb')
-    <li><a href="{{ url('beranda2') }}"><i class="fa fa-dashboard"></i>Rental Gudang</a></li>
+    <li><a href="{{ url('beranda2') }}"><i class="fa fa-dashboard"></i>Manajemen Rental</a></li>
     <li class="active">Stok Keluar</li>
 @endsection
 
@@ -55,7 +55,7 @@
     <div class="box col-md-6">
 
         <div class="box-header">
-            <h3 class="box-title">Export Invoice</h3>
+            <h3 class="box-title">Cetak Struk</h3>
         </div>
 
         {{--<div class="box-header">--}}
@@ -75,7 +75,7 @@
                     <th>Jumlah</th>
                     <th>Pembayaran</th>
                     <th>Tanggal Keluar</th>
-                    <th>Export Invoice</th>
+                    <th>Cetak Struk</th>
                 </tr>
                 </thead>
 

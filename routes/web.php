@@ -38,7 +38,8 @@ Route::group(['middleware' => 'auth'], function () {
     // Ubah password
     Route::get('settings/password', 'SettingsController@editPassword');
     Route::post('settings/password', 'SettingsController@updatePassword');
-    //WMS
+   
+    //----------------------------WMS-------------------------------\\
     Route::resource('gudang','WarehouseController');
     Route::get('/apiWarehouses','WarehouseController@apiWarehouses')->name('api.warehouses');
 
@@ -78,11 +79,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/exportCustomersAll','CustomerController@exportCustomersAll')->name('exportPDF.customersAll');
     Route::get('/exportCustomersAllExcel','CustomerController@exportExcel')->name('exportExcel.customersAll');
 
-
-    //Rental
+    //----------------------------Rental Gudang-------------------------------\\
     Route::resource('rental','RentalController');
     Route::get('/apiRentals','RentalController@apiRentals')->name('api.rentals');
-
 
     Route::resource('penyewa','RenterController');
     Route::get('/apiRenters','RenterController@apiRenters')->name('api.renters');
