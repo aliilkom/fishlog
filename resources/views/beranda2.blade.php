@@ -81,7 +81,7 @@
     </div>
     <!-- ./col -->
 </div>
-
+<!-- 
     <div class="row">
         <div class="box">
             <div class="box-body">
@@ -92,7 +92,71 @@
             </div>
             </div>
         </div>
-    </div>
+    </div> -->
+
+                
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="box box-default">
+                
+                    <div class="box-body">
+                    {!! $chart6 ->html() !!}
+                        <table id="stcokrentins" class="table text-center">
+                            <thead>
+                            <tr>
+                            <!-- <th>No</th> -->
+                                <th>Nama Barang</th>
+                                <th>Frekuensi Stok Rental Masuk</th>
+                            </tr>
+                            </thead>
+                            @foreach($stockrentins as $sri)
+                                <tbody>
+                                    <td>{{ $sri->product->nama }}</td>
+                                    <td>{{ $sri->total }}</td>
+                                </tbody>
+                            @endforeach
+                        </table>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+            <div class="box box-default">
+                
+                    <div class="box-body">
+                    {!! $chart7 ->html() !!}
+                        <table id="stockrentouts" class="table  text-center">
+                            <thead>
+                            <tr>
+                            <!-- <th>No</th> -->
+                                <th>Nama Barang</th>
+                                <th>Frekuensi Stok Rental Keluar</th>
+                            </tr>
+                            </thead>
+                            @foreach($stockrentouts as $sro)
+                                <tbody>
+                                    <td>{{ $sro->product->nama }}</td>
+                                    <td>{{ $sro->total }}</td>
+                                </tbody>
+                            @endforeach
+                        </table>
+                      
+                    </div>
+                </div>
+            
+            </div>
+            
+
+            
+<style>
+    table tbody:nth-child(n+7) {
+    display:none;
+    }
+</style>      
+
+{!! Charts::scripts() !!}
+{!! $chart6->script() !!}
+{!! $chart7->script() !!}
 @endsection
 
 @section('top')

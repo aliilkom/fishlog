@@ -17,7 +17,6 @@
 <!-- Small boxes (Stat box) -->
 <div class="row">
     
-    
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
         <div class="small-box bg-red">
@@ -148,7 +147,7 @@
     </div>
     <!-- ./col -->
 </div>
-
+<!-- 
     <div class="row">
         <div class="box">
             <div class="box-body">
@@ -159,27 +158,53 @@
             </div>
             </div>
         </div>
-    </div>
-
+    </div> -->
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <div class="box box-default">
-                <div class="box-header with-border">
-                    <h3 class="box-title">5 Stok Barang Terbanyak</h3>
-                </div>
+                
                     <div class="box-body">
-                        <table id="products" class="table">
+                    {!! $chart1 ->html() !!}
+                        <table id="products" class="table text-center">
                             <thead>
                             <tr>
                             <!-- <th>No</th> -->
+                                <th>Lokasi Gudang</th>
                                 <th>Nama Barang</th>
                                 <th>Jumlah</th>
                             </tr>
                             </thead>
                             @foreach($products as $p)
                                 <tbody>
+                                    <td>{{ $p->warehouse->nama }}</td>
                                     <td>{{ $p->nama }}</td>
                                     <td>{{ $p->jumlah }}</td>
+                                </tbody>
+                            @endforeach
+                        </table>
+                      
+                    </div>
+                </div>
+            </div>         
+            </div>
+<div class="row">
+        <div class="col-lg-6">
+            <div class="box box-default">
+                
+            <div class="box-body">
+                    {!! $chart2 ->html() !!}
+                        <table id="productouts" class="table text-center">
+                            <thead>
+                            <tr>
+                            <!-- <th>No</th> -->
+                                <th>Nama Barang</th>
+                                <th>Frekuensi Stok Masuk</th>
+                            </tr>
+                            </thead>
+                            @foreach($productins as $pi)
+                                <tbody>
+                                    <td>{{ $pi->product->nama }}</td>
+                                    <td>{{ $pi->total }}</td>
                                 </tbody>
                             @endforeach
                         </table>
@@ -189,16 +214,15 @@
             </div>
             <div class="col-lg-6">
             <div class="box box-default">
-                <div class="box-header with-border">
-                    <h3 class="box-title">5 Stok Keluar Terbanyak</h3>
-                </div>
-                    <div class="box-body">
-                        <table id="productouts" class="table">
+                
+            <div class="box-body">
+                    {!! $chart3 ->html() !!}
+                        <table id="productouts" class="table text-center">
                             <thead>
                             <tr>
                             <!-- <th>No</th> -->
                                 <th>Nama Barang</th>
-                                <th>Jumlah</th>
+                                <th>Frekuensi Stok Keluar</th>
                             </tr>
                             </thead>
                             @foreach($productouts as $po)
@@ -211,24 +235,132 @@
                       
                     </div>
                 </div>
+            
             </div>
-               
+            </div>
+            <div class="row">
+        <div class="col-lg-6">
+            <div class="box box-default">
+                
+            <div class="box-body">
+                    {!! $chart4 ->html() !!}
+                        <table id="suppliers" class="table text-center">
+                            <thead>
+                            <tr>
+                            <!-- <th>No</th> -->
+                                <th>Nama Penyuplai</th>
+                                <th>Frekuensi Suplai</th>
+                            </tr>
+                            </thead>
+                            @foreach($suppliers as $su)
+                                <tbody>
+                                    <td>{{ $su->supplier->nama }}</td>
+                                    <td>{{ $su->total }}</td>
+                                </tbody>
+                            @endforeach
+                        </table>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+            <div class="box box-default">
+                
+            <div class="box-body">
+                    {!! $chart5 ->html() !!}
+                        <table id="customers" class="table text-center">
+                            <thead>
+                            <tr>
+                            <!-- <th>No</th> -->
+                                <th>Nama Pembeli</th>
+                                <th>Frekuensi Beli</th>
+                            </tr>
+                            </thead>
+                            @foreach($customers as $cu)
+                                <tbody>
+                                    <td>{{ $cu->customer->nama }}</td>
+                                    <td>{{ $cu->total }}</td>
+                                </tbody>
+                            @endforeach
+                        </table>
+                      
+                    </div>
+                </div>
+            
+            </div>
+            
+         
+            
+<style>
+    table tbody:nth-child(n+7) {
+    display:none;
+    }
+</style>      
+
+{!! Charts::scripts() !!}
+{!! $chart1->script() !!}
+{!! $chart2->script() !!}
+{!! $chart3->script() !!}
+{!! $chart4->script() !!}
+{!! $chart5->script() !!}
+
+<!-- <script>
+var url = "{{url('beranda1')}}";
+var barang = new Array();
+var jumlah = new Array();
+$(document).ready(function(){
+          $.get(url, function(response){
+            response.forEach(function(data){
+                barang.push(data.nama);
+                jumlah.push(data.jumlah);
+            });
+var ctx = document.getElementById("myChart").getContext('2d');
+	var myChart = new Chart(ctx, {
+		type: 'bar',
+    
+	data: {
+        
+		labels: barang,
+		datasets: [{
+			data: jumlah,
+			backgroundColor: [
+			'rgba(255, 99, 132, 0.2)',
+			'rgba(54, 162, 235, 0.2)',
+			'rgba(255, 206, 86, 0.2)',
+			'rgba(75, 192, 192, 0.2)',
+			'rgba(153, 102, 255, 0.2)',
+			'rgba(255, 159, 64, 0.2)'
+			],
+			borderColor: [
+			'rgba(255,99,132,1)',
+			'rgba(54, 162, 235, 1)',
+			'rgba(255, 206, 86, 1)',
+			'rgba(75, 192, 192, 1)',
+			'rgba(153, 102, 255, 1)',
+			'rgba(255, 159, 64, 1)'
+			],
+		borderWidth: 1
+		}]
+	},
+	options: {
+        legend: {
+            display: false,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            }
+        }
+	}
+});
+</script> -->
     
 @endsection
 
 @section('top')
 @endsection
-
-<style>
-tbody:nth-child(n+7) {
-  display:none;
-}
-</style>
-
-
-
-
-
 
 
 {{--@extends('layouts.app')--}}

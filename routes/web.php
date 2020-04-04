@@ -18,6 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/beranda1', 'HomeController@beranda1')->name('beranda1');
+Route::get('/beranda1/chart1', 'HomeController@chart1')->name('chart1');
 Route::get('/beranda2', 'HomeController@beranda2')->name('beranda2');
 
 Route::get('dashboard', function () {
