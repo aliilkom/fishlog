@@ -90,8 +90,8 @@ class ProductController extends Controller
         $input['image'] = null;
 
         if ($request->hasFile('image')){
-            $input['image'] = '/upload/products/'.str_slug($input['nama'], '-').'.'.$request->image->getClientOriginalExtension();
-            $request->image->move(public_path('/upload/products/'), $input['image']);
+            $input['image'] = '/upload/barang/'.str_slug($input['nama'], '-').'.'.$request->image->getClientOriginalExtension();
+            $request->image->move(public_path('/upload/barang/'), $input['image']);
         }
 
         Product::create($input);
@@ -180,8 +180,8 @@ class ProductController extends Controller
             if (!$produk->image == NULL){
                 unlink(public_path($produk->image));
             }
-            $input['image'] = '/upload/products/'.str_slug($input['nama'], '-').'.'.$request->image->getClientOriginalExtension();
-            $request->image->move(public_path('/upload/products/'), $input['image']);
+            $input['image'] = '/upload/barang/'.str_slug($input['nama'], '-').'.'.$request->image->getClientOriginalExtension();
+            $request->image->move(public_path('/upload/barang/'), $input['image']);
         }
 
         $produk->update($input);
@@ -237,8 +237,8 @@ class ProductController extends Controller
             ->addColumn('action', function($product){
                 return 
                     // '<a href="#" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Show</a> ' .
-                    '<a onclick="editForm('. $product->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a> ' .
-                    '<a onclick="deleteData('. $product->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+                    '<a onclick="editForm('. $product->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Ubah</a> ' .
+                    '<a onclick="deleteData('. $product->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
             })
             ->rawColumns(['warehouse_nama','category_name','merk_name','show_photo','action'])->make(true);
 

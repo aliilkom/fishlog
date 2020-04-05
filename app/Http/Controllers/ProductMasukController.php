@@ -165,8 +165,8 @@ class ProductMasukController extends Controller
             ->addColumn('action', function($product){
                 return 
                     // '<a href="#" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Show</a> ' .
-                    '<a onclick="editForm('. $product->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a> ' .
-                    '<a onclick="deleteData('. $product->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a> ';
+                    '<a onclick="editForm('. $product->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Ubah</a> ' .
+                    '<a onclick="deleteData('. $product->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Hapus</a> ';
 
 
             })
@@ -178,18 +178,18 @@ class ProductMasukController extends Controller
     {
         $product_masuk = Product_Masuk::all();
         $pdf = PDF::loadView('product_masuk.productMasukAllPDF',compact('product_masuk'));
-        return $pdf->download('product_masuk.pdf');
+        return $pdf->download('Data Stok Masuk.pdf');
     }
 
     public function exportProductMasuk($id)
     {
         $product_masuk = Product_Masuk::findOrFail($id);
         $pdf = PDF::loadView('product_masuk.productMasukPDF', compact('product_masuk'));
-        return $pdf->download($product_masuk->id.'_product_masuk.pdf');
+        return $pdf->download($product_masuk->id.' Struk Stok Masuk.pdf');
     }
 
     public function exportExcel()
     {
-        return (new ExportProdukMasuk)->download('product_masuk.xlsx');
+        return (new ExportProdukMasuk)->download('Data Stok Masuk.xlsx');
     }
 }

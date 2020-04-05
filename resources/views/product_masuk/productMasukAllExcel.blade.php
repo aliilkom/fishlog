@@ -38,24 +38,26 @@
             color: white;
         }
     </style>
-
+ <h1>Data Stok Masuk</h1>
     <table id="product-masuk" width="100%">
         <thead>
         <tr>
-            <td>ID</td>
-            <td>Product</td>
-            <td>Supplier</td>
-            <td>Quantity</td>
-            <td>Date</td>
+            <td><b>Gudang</b></td>
+            <td><b>Barang</b></td>
+            <td><b>Stok Masuk</b></td>
+            <td><b>Penyuplai</b></td>
+            <td><b>Pembayaran</b></td>
+            <td><b>Tanggal Masuk</b></td>
         </tr>
         </thead>
         @foreach($product_masuk as $p)
             <tbody>
             <tr>
-                <td>{{ $p->id }}</td>
+                <td>{{ $p->product->warehouse->nama }}</td>
                 <td>{{ $p->product->nama }}</td>
+                <td>{{ $p->jumlah }}</td>
                 <td>{{ $p->supplier->nama }}</td>
-                <td>{{ $p->qty }}</td>
+                <td>{{ $p->pembayaran }}</td>
                 <td>{{ $p->tanggal }}</td>
             </tr>
             </tbody>

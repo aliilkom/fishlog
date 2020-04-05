@@ -38,27 +38,27 @@
         color: white;
     }
 </style>
-
+<h1>Data Rental Stok Masuk</h1>
 <table id="product-masuk" width="100%">
     <thead>
     <tr>
-        <td>ID</td>
-        <td>Product</td>
-        <td>Renter</td>
-        <td>Quantity</td>
-        <td>Quantity</td>
-        <td>Date</td>
+            <td><b>Gudang</b></td>
+            <td><b>Barang</b></td>
+            <td><b>Stok Masuk</b></td>
+            <td><b>Penyewa</b></td>
+            <td><b>Pembayaran</b></td>
+            <td><b>Tanggal Masuk</b></td>
     </tr>
     </thead>
     @foreach($Stockrentin as $p)
         <tbody>
         <tr>
-            <td>{{ $p->id }}</td>
-            <td>{{ $p->product->nama }}</td>
-            <td>{{ $p->renter->nama }}</td>
-            <td>{{ $p->jumlahsrent}}</td>
-            <td>{{ $p->pembayaran}}</td>
-            <td>{{ $p->tanggal }}</td>
+                <td>{{ $p->product->warehouse->nama }}</td>
+                <td>{{ $p->product->nama }}</td>
+                <td>{{ $p->jumlahsrent }}</td>
+                <td>{{ $p->renter->nama }}</td>
+                <td>{{ $p->pembayaran }}</td>
+                <td>{{ $p->tanggal }}</td>
         </tr>
         </tbody>
     @endforeach

@@ -11,26 +11,26 @@
 {{--<!-- Ionicons -->--}}
 {{--<link rel="stylesheet" href="{{ asset('assets/bower_components/Ionicons/css/ionicons.min.css')}} ">--}}
 
-{{--<title>Product Masuk Exports All PDF</title>--}}
+{{--<title>Product keluar Exports All PDF</title>--}}
 {{--</head>--}}
 {{--<body>--}}
 <style>
-    #product-masuk {
+    #product-keluar {
         font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
         border-collapse: collapse;
         width: 100%;
     }
 
-    #product-masuk td, #product-masuk th {
+    #product-keluar td, #product-keluar th {
         border: 1px solid #ddd;
         padding: 8px;
     }
 
-    #product-masuk tr:nth-child(even){background-color: #f2f2f2;}
+    #product-keluar tr:nth-child(even){background-color: #f2f2f2;}
 
-    #product-masuk tr:hover {background-color: #ddd;}
+    #product-keluar tr:hover {background-color: #ddd;}
 
-    #product-masuk th {
+    #product-keluar th {
         padding-top: 12px;
         padding-bottom: 12px;
         text-align: left;
@@ -38,30 +38,32 @@
         color: white;
     }
 </style>
-
-<table id="product-masuk" width="100%">
-    <thead>
-    <tr>
-        <td>ID</td>
-        <td>Product</td>
-        <td>Customer</td>
-        <td>Quantity</td>
-        <td>Date</td>
-    </tr>
-    </thead>
-    @foreach($product_keluar as $p)
-        <tbody>
+<h1>Data Stok Keluar</h1>
+    <table id="product-keluar" width="100%">
+        <thead>
         <tr>
-            <td>{{ $p->id }}</td>
-            <td>{{ $p->product->nama }}</td>
-            <td>{{ $p->customer->nama }}</td>
-            <td>{{ $p->qty }}</td>
-            <td>{{ $p->tanggal }}</td>
+            <td><b>Gudang</b></td>
+            <td><b>Barang</b></td>
+            <td><b>Stok Keluar</b></td>
+            <td><b>Pembeli</b></td>
+            <td><b>Pembayaran</b></td>
+            <td><b>Tanggal keluar</b></td>
         </tr>
-        </tbody>
-    @endforeach
+        </thead>
+        @foreach($product_keluar as $p)
+            <tbody>
+            <tr>
+                <td>{{ $p->product->warehouse->nama }}</td>
+                <td>{{ $p->product->nama }}</td>
+                <td>{{ $p->jumlah }}</td>
+                <td>{{ $p->customer->nama }}</td>
+                <td>{{ $p->pembayaran }}</td>
+                <td>{{ $p->tanggal }}</td>
+            </tr>
+            </tbody>
+        @endforeach
 
-</table>
+    </table>
 
 
 {{--<!-- jQuery 3 -->--}}

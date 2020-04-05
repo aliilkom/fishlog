@@ -15,22 +15,22 @@
 {{--</head>--}}
 {{--<body>--}}
 <style>
-    #product-masuk {
+    #stockrentout {
         font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
         border-collapse: collapse;
         width: 100%;
     }
 
-    #product-masuk td, #product-masuk th {
+    #stockrentout td, #stockrentout th {
         border: 1px solid #ddd;
         padding: 8px;
     }
 
-    #product-masuk tr:nth-child(even){background-color: #f2f2f2;}
+    #stockrentout tr:nth-child(even){background-color: #f2f2f2;}
 
-    #product-masuk tr:hover {background-color: #ddd;}
+    #stockrentout tr:hover {background-color: #ddd;}
 
-    #product-masuk th {
+    #stockrentout th {
         padding-top: 12px;
         padding-bottom: 12px;
         text-align: left;
@@ -38,25 +38,27 @@
         color: white;
     }
 </style>
-
-<table id="product-masuk" width="100%">
+<h1>Data Rental Stok Keluar</h1>
+<table id="stockrentout" width="100%">
     <thead>
     <tr>
-        <td>ID</td>
-        <td>Product</td>
-        <td>Customer</td>
-        <td>Quantity</td>
-        <td>Date</td>
+        <td><b>Gudang</b></td>
+        <td><b>Barang</b></td>
+        <td><b>Stok Keluar</b></td>
+        <td><b>Penyewa</b></td>
+        <td><b>Pembayaran</b></td>
+        <td><b>Tanggal Keluar</b></td>
     </tr>
     </thead>
     @foreach($Stockrentout as $p)
         <tbody>
         <tr>
-            <td>{{ $p->id }}</td>
-            <td>{{ $p->product->nama }}</td>
-            <td>{{ $p->renter->nama }}</td>
-            <td>{{ $p->qty }}</td>
-            <td>{{ $p->tanggal }}</td>
+                <td>{{ $p->product->warehouse->nama }}</td>
+                <td>{{ $p->product->nama }}</td>
+                <td>{{ $p->jumlahsrent }}</td>
+                <td>{{ $p->renter->nama }}</td>
+                <td>{{ $p->pembayaran }}</td>
+                <td>{{ $p->tanggal }}</td>
         </tr>
         </tbody>
     @endforeach

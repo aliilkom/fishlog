@@ -88,7 +88,7 @@
                         <td>{{ $i->pembayaran }}</td>
                         <td>{{ $i->tanggal }}</td>
                         <td>
-                            <a href="{{ route('exportPDF.productKeluar', [ 'id' => $i->id ]) }}" class="btn btn-sm btn-danger">Export PDF</a>
+                            <a href="{{ route('exportPDF.productKeluar', [ 'id' => $i->id ]) }}" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-print"></i> Cetak</a>
                         </td>
                     </tbody>
                 @endforeach

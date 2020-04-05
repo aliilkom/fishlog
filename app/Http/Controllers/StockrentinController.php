@@ -164,8 +164,8 @@ class StockrentinController extends Controller
             ->addColumn('action', function($product){
                 return 
                     // '<a href="#" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Show</a> ' .
-                    '<a onclick="editForm('. $product->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a> ' .
-                    '<a onclick="deleteData('. $product->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+                    '<a onclick="editForm('. $product->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Ubah</a> ' .
+                    '<a onclick="deleteData('. $product->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
             })
             ->rawColumns(['products_name','renter_name','action'])->make(true);
 
@@ -175,18 +175,18 @@ class StockrentinController extends Controller
     {
         $Stockrentin = Stockrentin::all();
         $pdf = PDF::loadView('stockrentins.StockrentinAllPDF',compact('Stockrentin'));
-        return $pdf->download('Stockrentin.pdf');
+        return $pdf->download('Data Stok Rental Masuk.pdf');
     }
 
     public function exportStockrentin($id)
     {
         $Stockrentin = Stockrentin::findOrFail($id);
         $pdf = PDF::loadView('stockrentins.StockrentinPDF', compact('Stockrentin'));
-        return $pdf->download($Stockrentin->id.'_Stockrentin.pdf');
+        return $pdf->download($Stockrentin->id.' Struk Stok Rental Masuk.pdf');
     }
 
     public function exportExcel()
     {
-        return (new ExportStockrentin)->download('Stockrentin.xlsx');
+        return (new ExportStockrentin)->download('Data Stok Rental Masuk.xlsx');
     }
 }

@@ -23,10 +23,11 @@
     <table cellpadding="0" cellspacing="0">
         <tr class="top">
             <td colspan="2">
-                <table>
-                    <tr>
+            <table>
+                    <tr  align="center">
                         <td class="title">
-                            <img src="https://www.sparksuite.com/images/logo.png" style="width:100%; max-width:300px;">
+                            <!-- <img src="https://api.minapoli.com/media/renters/p/0f567bc89dce587d8567211a73889d84.png" class="rounded mx-auto d-block text-center"> -->
+                            <h1>Struk Stok Rental Keluar</h1>
                         </td>
                     </tr>
                 </table>
@@ -35,55 +36,66 @@
     </table>
 
 
-        <table border="0" id="table-data" width="80%">
-            <tr>
-                <td width="70px">Invoice ID</td>
-                <td width="">: {{ $Stockrentout->id }}</td>
-                <td width="30px">Created</td>
-                <td>: {{ $Stockrentout->tanggal }}</td>
-            </tr>
+    <table class="text-center" id="table-data" width="100%">
+        <tr>
+            <td><b>ID Struk</b></td>
+            <td>: {{ $Stockrentout->id }}</td>
+            <td><b>Penyewa</b></td>
+            <td>: {{ $Stockrentout->renter->nama }}</td>
+        </tr>
 
-            <tr>
-                <td>Telepon</td>
-                <td>: {{ $Stockrentout->renter->telepon }}</td>
-                <td>Alamat</td>
-                <td>: {{ $Stockrentout->renter->alamat }}</td>
-            </tr>
+        <tr>
+            <td><b>Tanggal Keluar</b></td>
+            <td>: {{ $Stockrentout->tanggal }}</td>
+            <td><b>Telepon</b></td>
+            <td>: {{ $Stockrentout->renter->telepon }}</td>
+            
+        </tr>
 
-            <tr>
-                <td>Nama</td>
-                <td>: {{ $Stockrentout->renter->nama }}</td>
-                <td>Email</td>
-                <td>: {{ $Stockrentout->renter->email }}</td>
-            </tr>
+        <tr>
+            <td><b>Gudang</b></td>
+            <td >: {{ $Stockrentout->product->warehouse->nama }}</td>
+            <td><b>Alamat</b></td>
+            <td>: {{ $Stockrentout->renter->alamat }}</td>
+            
+        </tr>
+        
+        <tr>
+            <td><b>Barang</b></td>
+            <td >: {{ $Stockrentout->product->nama }}</td>
+            <td><b>Email</b></td>
+            <td>: {{ $Stockrentout->renter->email }}</td>
+           
+        </tr>
 
-            <tr>
-                <td>Product</td>
-                <td >: {{ $Stockrentout->product->nama }}</td>
-                <td>Quantity</td>
-                <td >: {{ $Stockrentout->jumlahsrent }}</td>
-            </tr>
-
-        </table>
-
-        {{--<hr  size="2px" color="black" align="left" width="45%">--}}
-
-
-        <table border="0" width="80%">
-            <tr align="right">
-                <td>Hormat Kami</td>
-            </tr>
-        </table>
-
-    <table border="0" width="80%">
-        <tr align="right">
-            <td><img src="https://upload.wikimedia.org/wikipedia/en/f/f4/Timothy_Spall_Signature.png" width="100px" height="100px"></td>
+        <tr>
+            <td><b>Stok Keluar</b></td>
+            <td >: {{ $Stockrentout->jumlahsrent }}</td>
+            <td><b>Pembayaran</b></td>
+            <td>: {{ $Stockrentout->pembayaran }}</td>
+           
         </tr>
 
     </table>
-        <table border="0" width="80%">
-            <tr align="right">
-                <td>Sheptian Bagja Utama</td>
-            </tr>
-        </table>
+
+    {{--<hr  size="2px" color="black" align="left" width="45%">--}}
+
+    <br><br><br>
+    <table border="0" width="100%">
+        <tr align="right">
+            <td>Hormat Kami</td>
+        </tr>
+    </table>
+
+    <table border="0" width="80%">
+        <tr align="right">
+            <!-- <td><img src="https://upload.wikimedia.org/wikipedia/en/f/f4/Timothy_Spall_Signature.png" width="100px" height="100px"></td> -->
+        </tr>
+    <br><br><br>
+    </table>
+    <table border="0" width="100%">
+        <tr align="right">
+            <td>{{Auth::user()->name}}</td>
+        </tr>
+    </table>
 </div>

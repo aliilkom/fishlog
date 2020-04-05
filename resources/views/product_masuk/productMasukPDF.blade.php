@@ -24,9 +24,10 @@
         <tr class="top">
             <td colspan="2">
                 <table>
-                    <tr>
+                    <tr  align="center">
                         <td class="title">
-                            <img src="https://www.sparksuite.com/images/logo.png" style="width:100%; max-width:300px;">
+                            <!-- <img src="https://api.minapoli.com/media/suppliers/p/0f567bc89dce587d8567211a73889d84.png" class="rounded mx-auto d-block text-center"> -->
+                            <h1>Struk Stok Masuk</h1>
                         </td>
                     </tr>
                 </table>
@@ -35,41 +36,52 @@
     </table>
 
 
-    <table border="0" id="table-data" width="80%">
+    <table class="text-center" id="table-data" width="100%">
         <tr>
-            <td width="70px">Invoice ID</td>
-            <td width="">: {{ $product_masuk->id }}</td>
-            <td width="30px">Created</td>
-            <td>: {{ $product_masuk->tanggal }}</td>
-        </tr>
-
-        <tr>
-            <td>Telepon</td>
-            <td>: {{ $product_masuk->supplier->telepon }}</td>
-            <td>Alamat</td>
-            <td>: {{ $product_masuk->supplier->alamat }}</td>
-        </tr>
-
-        <tr>
-            <td>Nama</td>
+            <td><b>ID Struk</b></td>
+            <td>: {{ $product_masuk->id }}</td>
+            <td><b>Nama</b></td>
             <td>: {{ $product_masuk->supplier->nama }}</td>
-            <td>Email</td>
-            <td>: {{ $product_masuk->supplier->email }}</td>
         </tr>
 
         <tr>
-            <td>Product</td>
+            <td><b>Tanggal Masuk</b></td>
+            <td>: {{ $product_masuk->tanggal }}</td>
+            <td><b>Telepon</b></td>
+            <td>: {{ $product_masuk->supplier->telepon }}</td>
+            
+        </tr>
+
+        <tr>
+            <td><b>Gudang</b></td>
+            <td >: {{ $product_masuk->product->warehouse->nama }}</td>
+            <td><b>Alamat</b></td>
+            <td>: {{ $product_masuk->supplier->alamat }}</td>
+            
+        </tr>
+        
+        <tr>
+            <td><b>Barang</b></td>
             <td >: {{ $product_masuk->product->nama }}</td>
-            <td>Quantity</td>
-            <td >: {{ $product_masuk->qty }}</td>
+            <td><b>Email</b></td>
+            <td>: {{ $product_masuk->supplier->email }}</td>
+           
+        </tr>
+
+        <tr>
+            <td><b>Stok masuk</b></td>
+            <td >: {{ $product_masuk->jumlah }}</td>
+            <td><b>Pembayaran</b></td>
+            <td>: {{ $product_masuk->pembayaran }}</td>
+           
         </tr>
 
     </table>
 
     {{--<hr  size="2px" color="black" align="left" width="45%">--}}
 
-
-    <table border="0" width="80%">
+    <br><br><br>
+    <table border="0" width="100%">
         <tr align="right">
             <td>Hormat Kami</td>
         </tr>
@@ -77,13 +89,13 @@
 
     <table border="0" width="80%">
         <tr align="right">
-            <td><img src="https://upload.wikimedia.org/wikipedia/en/f/f4/Timothy_Spall_Signature.png" width="100px" height="100px"></td>
+            <!-- <td><img src="https://upload.wikimedia.org/wikipedia/en/f/f4/Timothy_Spall_Signature.png" width="100px" height="100px"></td> -->
         </tr>
-
+    <br><br><br>
     </table>
-    <table border="0" width="80%">
+    <table border="0" width="100%">
         <tr align="right">
-            <td>Sheptian Bagja Utama</td>
+            <td>{{Auth::user()->name}}</td>
         </tr>
     </table>
 </div>

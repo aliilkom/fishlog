@@ -59,8 +59,8 @@ class SupplierController extends Controller
         $input['image'] = null;
 
         if ($request->hasFile('image')){
-            $input['image'] = '/upload/products/'.str_slug($input['nama'], '-').'.'.$request->image->getClientOriginalExtension();
-            $request->image->move(public_path('/upload/products/'), $input['image']);
+            $input['image'] = '/upload/penyuplai/'.str_slug($input['nama'], '-').'.'.$request->image->getClientOriginalExtension();
+            $request->image->move(public_path('/upload/penyuplai/'), $input['image']);
         }
 
         Supplier::create($input);
@@ -120,8 +120,8 @@ class SupplierController extends Controller
             if (!$supplier->image == NULL){
                 unlink(public_path($supplier->image));
             }
-            $input['image'] = '/upload/products/'.str_slug($input['nama'], '-').'.'.$request->image->getClientOriginalExtension();
-            $request->image->move(public_path('/upload/products/'), $input['image']);
+            $input['image'] = '/upload/penyuplai/'.str_slug($input['nama'], '-').'.'.$request->image->getClientOriginalExtension();
+            $request->image->move(public_path('/upload/penyuplai/'), $input['image']);
         }
 
         $supplier->update($input);
@@ -169,8 +169,8 @@ class SupplierController extends Controller
             ->addColumn('action', function($suppliers){
                 return 
                     // '<a href="#" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Show</a> ' .
-                    '<a onclick="editForm('. $suppliers->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a> ' .
-                    '<a onclick="deleteData('. $suppliers->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+                    '<a onclick="editForm('. $suppliers->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Ubah</a> ' .
+                    '<a onclick="deleteData('. $suppliers->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
             })
             ->rawColumns(['show_photo','action'])->make(true);
     }

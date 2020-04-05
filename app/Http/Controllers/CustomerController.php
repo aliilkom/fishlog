@@ -58,8 +58,8 @@ class CustomerController extends Controller
         $input['image'] = null;
 
         if ($request->hasFile('image')){
-            $input['image'] = '/upload/products/'.str_slug($input['nama'], '-').'.'.$request->image->getClientOriginalExtension();
-            $request->image->move(public_path('/upload/products/'), $input['image']);
+            $input['image'] = '/upload/pembeli/'.str_slug($input['nama'], '-').'.'.$request->image->getClientOriginalExtension();
+            $request->image->move(public_path('/upload/pembeli/'), $input['image']);
         }
 
         Customer::create($input);
@@ -118,8 +118,8 @@ class CustomerController extends Controller
             if (!$customer->image == NULL){
                 unlink(public_path($customer->image));
             }
-            $input['image'] = '/upload/products/'.str_slug($input['nama'], '-').'.'.$request->image->getClientOriginalExtension();
-            $request->image->move(public_path('/upload/products/'), $input['image']);
+            $input['image'] = '/upload/pembeli/'.str_slug($input['nama'], '-').'.'.$request->image->getClientOriginalExtension();
+            $request->image->move(public_path('/upload/pembeli/'), $input['image']);
         }
 
         $customer->update($input);
@@ -169,8 +169,8 @@ class CustomerController extends Controller
                 return 
                 
                     // '<a href="#" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Show</a> ' .
-                    '<a onclick="editForm('. $customer->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a> ' .
-                    '<a onclick="deleteData('. $customer->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+                    '<a onclick="editForm('. $customer->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Ubah</a> ' .
+                    '<a onclick="deleteData('. $customer->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
             })
             ->rawColumns(['show_photo','action'])->make(true);
     }

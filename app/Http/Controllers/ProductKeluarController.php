@@ -166,8 +166,8 @@ class ProductKeluarController extends Controller
             ->addColumn('action', function($product){
                 return 
                     // '<a href="#" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Show</a> ' .
-                    '<a onclick="editForm('. $product->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a> ' .
-                    '<a onclick="deleteData('. $product->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+                    '<a onclick="editForm('. $product->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Ubah</a> ' .
+                    '<a onclick="deleteData('. $product->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
             })
             ->rawColumns(['products_name','customer_name','action'])->make(true);
 
@@ -177,18 +177,18 @@ class ProductKeluarController extends Controller
     {
         $product_keluar = Product_Keluar::all();
         $pdf = PDF::loadView('product_keluar.productKeluarAllPDF',compact('product_keluar'));
-        return $pdf->download('product_keluar.pdf');
+        return $pdf->download('Data Stok Keluar.pdf');
     }
 
     public function exportProductKeluar($id)
     {
         $product_keluar = Product_Keluar::findOrFail($id);
         $pdf = PDF::loadView('product_keluar.productKeluarPDF', compact('product_keluar'));
-        return $pdf->download($product_keluar->id.'_product_keluar.pdf');
+        return $pdf->download($product_keluar->id.' Struk Stok Keluar.pdf');
     }
 
     public function exportExcel()
     {
-        return (new ExportProdukKeluar)->download('product_keluar.xlsx');
+        return (new ExportProdukKeluar)->download('Data Stok Keluar.xlsx');
     }
 }

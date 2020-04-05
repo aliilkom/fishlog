@@ -60,8 +60,8 @@ class RentalController extends Controller
         $input['image'] = null;
 
         if ($request->hasFile('image')){
-            $input['image'] = '/upload/products/'.str_slug($input['nama'], '-').'.'.$request->image->getClientOriginalExtension();
-            $request->image->move(public_path('/upload/products/'), $input['image']);
+            $input['image'] = '/upload/gudang/'.str_slug($input['nama'], '-').'.'.$request->image->getClientOriginalExtension();
+            $request->image->move(public_path('/upload/gudang/'), $input['image']);
         }
 
         Warehouse::create($input);
@@ -126,8 +126,8 @@ class RentalController extends Controller
             if (!$warehouse->image == NULL){
                 unlink(public_path($warehouse->image));
             }
-            $input['image'] = '/upload/products/'.str_slug($input['nama'], '-').'.'.$request->image->getClientOriginalExtension();
-            $request->image->move(public_path('/upload/products/'), $input['image']);
+            $input['image'] = '/upload/gudang/'.str_slug($input['nama'], '-').'.'.$request->image->getClientOriginalExtension();
+            $request->image->move(public_path('/upload/gudang/'), $input['image']);
         }
 
         $warehouse->update($input);

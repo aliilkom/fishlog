@@ -58,8 +58,8 @@ class RenterController extends Controller
         $input['image'] = null;
 
         if ($request->hasFile('image')){
-            $input['image'] = '/upload/products/'.str_slug($input['nama'], '-').'.'.$request->image->getClientOriginalExtension();
-            $request->image->move(public_path('/upload/products/'), $input['image']);
+            $input['image'] = '/upload/penyewa/'.str_slug($input['nama'], '-').'.'.$request->image->getClientOriginalExtension();
+            $request->image->move(public_path('/upload/penyewa/'), $input['image']);
         }
 
         Renter::create($input);
@@ -118,8 +118,8 @@ class RenterController extends Controller
             if (!$Renter->image == NULL){
                 unlink(public_path($Renter->image));
             }
-            $input['image'] = '/upload/products/'.str_slug($input['nama'], '-').'.'.$request->image->getClientOriginalExtension();
-            $request->image->move(public_path('/upload/products/'), $input['image']);
+            $input['image'] = '/upload/penyewa/'.str_slug($input['nama'], '-').'.'.$request->image->getClientOriginalExtension();
+            $request->image->move(public_path('/upload/penyewa/'), $input['image']);
         }
 
         $Renter->update($input);
@@ -169,8 +169,8 @@ class RenterController extends Controller
                 return 
                 
                     // '<a href="#" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Show</a> ' .
-                    '<a onclick="editForm('. $Renter->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a> ' .
-                    '<a onclick="deleteData('. $Renter->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+                    '<a onclick="editForm('. $Renter->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Ubah</a> ' .
+                    '<a onclick="deleteData('. $Renter->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
             })
             ->rawColumns(['show_photo','action'])->make(true);
     }
