@@ -17,7 +17,7 @@ class ExportStockrentin implements FromView
     public function view(): View
     {
         // TODO: Implement view() method.
-        return view('stockrentins.StockrentinAllExcel',[
+        return view('rental.stockrentins.StockrentinAllExcel',[
             'Stockrentin' => Stockrentin::all()
         ]);
     }

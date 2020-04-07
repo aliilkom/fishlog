@@ -18,9 +18,9 @@ class CreateStockrentoutsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('product_id')->unsigned();
             $table->integer('renter_id')->unsigned();
-            $table->integer('jumlahsrent');
-            $table->string('pembayaran');
-            $table->date('tanggal');
+            $table->integer('jumlah')->nullable();
+            $table->string('pembayaran')->nullable();
+            $table->date('tanggal')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

@@ -17,7 +17,7 @@ class ExportProdukMasuk implements FromView
     public function view(): View
     {
         // TODO: Implement view() method.
-        return view('product_masuk.productMasukAllExcel',[
+        return view('gudang.product_masuk.productMasukAllExcel',[
             'product_masuk' => Product_Masuk::all()
         ]);
     }

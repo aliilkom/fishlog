@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Stockrentin extends Model
 {
-    protected $fillable = ['user_id', 'product_id','renter_id','jumlahsrent', 'pembayaran','tanggal'];
+    protected $fillable = ['user_id', 'product_id','renter_id','jumlah', 'pembayaran','tanggal'];
 
     protected $hidden = ['created_at','updated_at'];
 

@@ -17,9 +17,9 @@ class CreateCustomersTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('nama');
-            $table->text('alamat');
-            $table->string('email');
-            $table->string('telepon');
+            $table->text('alamat')->nullable();
+            $table->string('email')->nullable();
+            $table->string('telepon')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
 

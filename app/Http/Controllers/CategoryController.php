@@ -23,7 +23,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view('categories.index');
+        return view('gudang.categories.index');
     }
 
     /**
@@ -121,7 +121,9 @@ class CategoryController extends Controller
     public function apiCategories()
     {
         $id = Auth::id();
-        $categories = Category::all()->where('user_id', $id);
+        $categories = Category::all()
+        ->where('user_id', $id)
+        ->where('manajemen', 'gudang');;
 
         return Datatables::of($categories)
             ->addColumn('action', function($categories){

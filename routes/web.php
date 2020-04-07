@@ -17,9 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/beranda1', 'HomeController@beranda1')->name('beranda1');
-Route::get('/beranda1/chart1', 'HomeController@chart1')->name('chart1');
-Route::get('/beranda2', 'HomeController@beranda2')->name('beranda2');
+Route::get('/berandagudang', 'HomeController@berandagudang')->name('berandagudang');
+Route::get('/berandarental', 'HomeController@berandarental')->name('berandarental');
 
 Route::get('dashboard', function () {
    return view('layouts.master');
@@ -47,11 +46,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('barang','ProductController');
     Route::get('/apiProducts','ProductController@apiProducts')->name('api.products');
 
+    Route::resource('pindah','MoveController');
+    Route::get('/apiMoves','MoveController@apiMoves')->name('api.moves');
+
     Route::resource('kategori','CategoryController');
     Route::get('/apiCategories','CategoryController@apiCategories')->name('api.categories');
-    Route::get('/exportCategoriesAll','CategoryController@exportCategoriesAll')->name('exportPDF.categoriesAll');
-    Route::get('/exportCategoriesAllExcel','CategoryController@exportExcel')->name('exportExcel.categoriesAll');
-
+    
     Route::resource('merek','MerkController');
     Route::get('/apiMerks','MerkController@apiMerks')->name('api.merks');
 
@@ -61,7 +61,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/exportProductMasukAllExcel','ProductMasukController@exportExcel')->name('exportExcel.productMasukAll');
     Route::get('/exportProductMasuk/{id}','ProductMasukController@exportProductMasuk')->name('exportPDF.productMasuk');
    
-    
     Route::resource('penyuplai','SupplierController');
     Route::get('/apiSuppliers','SupplierController@apiSuppliers')->name('api.suppliers');
     Route::post('/importSuppliers','SupplierController@ImportExcel')->name('import.suppliers');
@@ -81,8 +80,17 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/exportCustomersAllExcel','CustomerController@exportExcel')->name('exportExcel.customersAll');
 
     //----------------------------Rental Gudang-------------------------------\\
-    Route::resource('rental','RentalController');
+    Route::resource('rentalgudang','RentalController');
     Route::get('/apiRentals','RentalController@apiRentals')->name('api.rentals');
+
+    Route::resource('rentalbarang','RentalProductController');
+    Route::get('/apiRentalProducts','RentalProductController@apiRentalProducts')->name('api.rentalproducts');
+
+    Route::resource('rentalkategori','RentalCategoryController');
+    Route::get('/apiRentalCategories','RentalCategoryController@apiRentalCategories')->name('api.rentalcategories');
+    
+    Route::resource('rentalmerek','RentalMerkController');
+    Route::get('/apiRentalMerks','RentalMerkController@apiRentalMerks')->name('api.rentalmerks');
 
     Route::resource('penyewa','RenterController');
     Route::get('/apiRenters','RenterController@apiRenters')->name('api.renters');
@@ -90,17 +98,23 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/exportRentersAll','RenterController@exportRentersAll')->name('exportPDF.rentersAll');
     Route::get('/exportRentersAllExcel','RenterController@exportExcel')->name('exportExcel.rentersAll');
     
-    Route::resource('stokrentalmasuk','StockrentinController');
+    Route::resource('rentalstokmasuk','StockrentinController');
     Route::get('/apiStockrentins','StockrentinController@apiStockrentins')->name('api.stockrentins');
     Route::get('/exportStockrentinAll','StockrentinController@exportStockrentinAll')->name('exportPDF.StockrentinAll');
     Route::get('/exportStockrentinAllExcel','StockrentinController@exportExcel')->name('exportExcel.StockrentinAll');
     Route::get('/exportStockrentin/{id}','StockrentinController@exportStockrentin')->name('exportPDF.Stockrentin');
 
-    Route::resource('stokrentalkeluar','StockrentoutController');
+    Route::resource('rentalstokkeluar','StockrentoutController');
     Route::get('/apiStockrentouts','StockrentoutController@apiStockrentouts')->name('api.stockrentouts');
     Route::get('/exportStockrentoutAll','StockrentoutController@exportStockrentoutAll')->name('exportPDF.StockrentoutAll');
     Route::get('/exportStockrentoutAllExcel','StockrentoutController@exportExcel')->name('exportExcel.StockrentoutAll');
     Route::get('/exportStockrentout/{id}','StockrentoutController@exportStockrentout')->name('exportPDF.Stockrentout');
+
+    Route::resource('tagihan','BillController');
+    Route::get('/apiBills','BillController@apiBills')->name('api.bills');
+    Route::get('/exportBillAll','BillController@exportBill')->name('exportPDF.BillAll');
+    Route::get('/exportBillExcel','BillController@exportExcel')->name('exportExcel.BillAll');
+    Route::get('/exportBill/{id}','BillController@exportBill')->name('exportPDF.Bill');
     
    
 });

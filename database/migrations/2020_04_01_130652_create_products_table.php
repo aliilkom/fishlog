@@ -23,11 +23,12 @@ class CreateProductsTable extends Migration
             $table->string('nama');
             $table->string('sku')->nullable();
             $table->integer('jumlah')->nullable();
-            $table->integer('jumlahsrent')->nullable();
+            $table->integer('jumlahpindah')->nullable();
             $table->integer('tagihan')->nullable();
-            $table->string('satuan');
+            $table->string('satuan')->nullable();
             $table->string('spesifikasi')->nullable();
             $table->string('image')->nullable();
+            $table->string('manajemen')->nullable();
             $table->timestamps();
             
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

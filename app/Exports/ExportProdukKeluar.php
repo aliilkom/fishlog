@@ -17,7 +17,7 @@ class ExportProdukKeluar implements FromView
     public function view(): View
     {
         // TODO: Implement view() method.
-        return view('product_keluar.productKeluarAllExcel',[
+        return view('gudang.product_keluar.productKeluarAllExcel',[
             'product_keluar' => Product_Keluar::all()
         ]);
     }

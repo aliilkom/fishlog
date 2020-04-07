@@ -26,7 +26,7 @@ class RentalController extends Controller
             ->pluck('name','id');
             
         $warehouse = Warehouse::all();
-        return view('rentals.index', compact('user'));
+        return view('rental.rentals.index', compact('user'));
     }
 
     /**

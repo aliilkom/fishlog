@@ -26,7 +26,7 @@ class WarehouseController extends Controller
             ->pluck('name','id');
             
         $warehouse = Warehouse::all();
-        return view('warehouses.index', compact('user'));
+        return view('gudang.warehouses.index', compact('user'));
     }
 
     /**

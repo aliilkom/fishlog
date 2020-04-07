@@ -31,16 +31,18 @@ class ProductController extends Controller
         
         $category = Category::orderBy('name','ASC')
             ->where('user_id', $id) 
+            ->where('manajemen', 'gudang')
             ->get()
             ->pluck('name','id');
 
         $merk = Merk::orderBy('name','ASC')
             ->where('user_id', $id)
+            ->where('manajemen', 'gudang')
             ->get()
             ->pluck('name','id');
 
         $product = Product::all();
-        return view('products.index', compact('warehouse','category','merk'));
+        return view('gudang.products.index', compact('warehouse','category','merk'));
     }
 
     /**
@@ -216,7 +218,9 @@ class ProductController extends Controller
 
     public function apiProducts(){
         $id = Auth::id();
-        $product = Product::all()->where('user_id', $id);
+        $product = Product::all()
+        ->where('user_id', $id)
+        ->where('manajemen', 'gudang');
 
         return Datatables::of($product)
             ->addColumn('warehouse_nama', function ($product){

@@ -27,7 +27,7 @@ class SupplierController extends Controller
     public function index()
     {
         $suppliers = Supplier::all();
-        return view('suppliers.index');
+        return view('gudang.suppliers.index');
     }
 
     /**

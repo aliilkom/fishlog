@@ -29,6 +29,7 @@ class ProductKeluarController extends Controller
         $id = Auth::id();
         $products = Product::orderBy('nama','ASC')
             ->where('user_id', $id)
+            ->where('manajemen', 'gudang')
             ->get()
             ->pluck('nama','id');
 
@@ -38,7 +39,7 @@ class ProductKeluarController extends Controller
             ->pluck('nama','id');
 
         $invoice_data = Product_Keluar::all()->where('user_id', $id);
-        return view('product_keluar.index', compact('products','customers', 'invoice_data'));
+        return view('gudang.product_keluar.index', compact('products','customers', 'invoice_data'));
     }
 
     /**
@@ -160,6 +161,9 @@ class ProductKeluarController extends Controller
             ->addColumn('products_name', function ($product){
                 return $product->product->nama;
             })
+            ->addColumn('stok', function ($product){
+                return $product->product->jumlah;
+            })
             ->addColumn('customer_name', function ($product){
                 return $product->customer->nama;
             })
@@ -169,21 +173,21 @@ class ProductKeluarController extends Controller
                     '<a onclick="editForm('. $product->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Ubah</a> ' .
                     '<a onclick="deleteData('. $product->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
             })
-            ->rawColumns(['products_name','customer_name','action'])->make(true);
+            ->rawColumns(['products_name', 'stok', 'customer_name','action'])->make(true);
 
     }
 
     public function exportProductKeluarAll()
     {
         $product_keluar = Product_Keluar::all();
-        $pdf = PDF::loadView('product_keluar.productKeluarAllPDF',compact('product_keluar'));
+        $pdf = PDF::loadView('gudang.product_keluar.productKeluarAllPDF',compact('product_keluar'));
         return $pdf->download('Data Stok Keluar.pdf');
     }
 
     public function exportProductKeluar($id)
     {
         $product_keluar = Product_Keluar::findOrFail($id);
-        $pdf = PDF::loadView('product_keluar.productKeluarPDF', compact('product_keluar'));
+        $pdf = PDF::loadView('gudang.product_keluar.productKeluarPDF', compact('product_keluar'));
         return $pdf->download($product_keluar->id.' Struk Stok Keluar.pdf');
     }
 

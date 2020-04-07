@@ -23,7 +23,7 @@ class MerkController extends Controller
     public function index()
     {
         $merek = Merk::all();
-        return view('merek.index');
+        return view('gudang.merek.index');
     }
 
     /**
@@ -121,7 +121,9 @@ class MerkController extends Controller
     public function apiMerks()
     {
         $id = Auth::id();
-        $merek = Merk::all()->where('user_id', $id);
+        $merek = Merk::all()
+        ->where('user_id', $id)
+        ->where('manajemen', 'gudang');;
 
         return Datatables::of($merek)
             ->addColumn('action', function($merek){

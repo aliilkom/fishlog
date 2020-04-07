@@ -28,6 +28,7 @@ class StockrentoutController extends Controller
         $id = Auth::id();
         $products = Product::orderBy('nama','ASC')
             ->where('user_id', $id)
+            ->where('manajemen', 'rental')
             ->get()
             ->pluck('nama','id');
 
@@ -37,7 +38,7 @@ class StockrentoutController extends Controller
             ->pluck('nama','id');
 
         $invoice_data = Stockrentout::all()->where('user_id', $id);
-        return view('stockrentouts.index', compact('products','renters', 'invoice_data'));
+        return view('rental.stockrentouts.index', compact('products','renters', 'invoice_data'));
     }
 
     /**
@@ -61,7 +62,7 @@ class StockrentoutController extends Controller
         $this->validate($request, [
             'product_id'     => 'required',
             'renter_id'    => 'required',
-            'jumlahsrent'         => 'required',
+            'jumlah'         => 'required',
             'pembayaran'     => 'required',
             'tanggal'        => 'required'
         ]);
@@ -69,7 +70,7 @@ class StockrentoutController extends Controller
         Stockrentout::create($request->all());
         
         $product = Product::findOrFail($request->product_id);
-        $product->jumlahsrent -= $request->jumlahsrent;
+        $product->jumlah -= $request->jumlah;
         $product->save();
        
 
@@ -115,7 +116,7 @@ class StockrentoutController extends Controller
         $this->validate($request, [
             'product_id'     => 'required',
             'renter_id'    => 'required',
-            'jumlahsrent'         => 'required',
+            'jumlah'         => 'required',
             'pembayaran'     => 'required',
             'tanggal'        => 'required'
         ]);
@@ -124,7 +125,7 @@ class StockrentoutController extends Controller
         $Stockrentout->update($request->all());
 
         $product = Product::findOrFail($request->product_id);
-        $product->jumlahsrent -= $request->jumlahsrent;
+        $product->jumlah -= $request->jumlah;
         $product->update();
 
         return response()->json([
@@ -159,6 +160,9 @@ class StockrentoutController extends Controller
             ->addColumn('products_name', function ($product){
                 return $product->product->nama;
             })
+            ->addColumn('stok', function ($product){
+                return $product->product->jumlah;
+            })
             ->addColumn('renter_name', function ($product){
                 return $product->renter->nama;
             })
@@ -168,21 +172,21 @@ class StockrentoutController extends Controller
                     '<a onclick="editForm('. $product->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Ubah</a> ' .
                     '<a onclick="deleteData('. $product->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
             })
-            ->rawColumns(['products_name','renter_name','action'])->make(true);
+            ->rawColumns(['products_name', 'stok','renter_name','action'])->make(true);
 
     }
 
     public function exportStockrentoutAll()
     {
         $Stockrentout = Stockrentout::all();
-        $pdf = PDF::loadView('stockrentouts.StockrentoutAllPDF',compact('Stockrentout'));
+        $pdf = PDF::loadView('rental.stockrentouts.StockrentoutAllPDF',compact('Stockrentout'));
         return $pdf->download('Data Stok Rental Keluar.pdf');
     }
 
     public function exportStockrentout($id)
     {
         $Stockrentout = Stockrentout::findOrFail($id);
-        $pdf = PDF::loadView('stockrentouts.StockrentoutPDF', compact('Stockrentout'));
+        $pdf = PDF::loadView('rental.stockrentouts.StockrentoutPDF', compact('Stockrentout'));
         return $pdf->download($Stockrentout->id.' Struk Stok Rental Keluar.pdf');
     }
 

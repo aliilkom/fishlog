@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Merk extends Model
 {
-    protected $fillable = ['user_id', 'name'];
+    protected $fillable = ['user_id', 'name', 'manajemen'];
 
     public function user()
     {

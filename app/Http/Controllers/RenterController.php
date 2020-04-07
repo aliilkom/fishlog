@@ -26,7 +26,7 @@ class RenterController extends Controller
     public function index()
     {
         $Renters = Renter::all();
-        return view('renters.index');
+        return view('rental.renters.index');
     }
 
     /**

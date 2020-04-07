@@ -29,6 +29,7 @@ class ProductMasukController extends Controller
         $id = Auth::id();
         $products = Product::orderBy('nama','ASC')
             ->where('user_id', $id)
+            ->where('manajemen', 'gudang')
             ->get()
             ->pluck('nama','id');
 
@@ -38,7 +39,7 @@ class ProductMasukController extends Controller
             ->pluck('nama','id');
 
         $invoice_data = Product_Masuk::all()->where('user_id', $id);
-        return view('product_masuk.index', compact('products','suppliers','invoice_data'));
+        return view('gudang.product_masuk.index', compact('products','suppliers','invoice_data'));
     }
 
     /**
@@ -159,6 +160,9 @@ class ProductMasukController extends Controller
             ->addColumn('products_name', function ($product){
                 return $product->product->nama;
             })
+            ->addColumn('stok', function ($product){
+                return $product->product->jumlah;
+            })
             ->addColumn('supplier_name', function ($product){
                 return $product->supplier->nama;
             })
@@ -170,21 +174,21 @@ class ProductMasukController extends Controller
 
 
             })
-            ->rawColumns(['products_name','supplier_name','action'])->make(true);
+            ->rawColumns(['products_name', 'stok', 'supplier_name','action'])->make(true);
 
     }
 
     public function exportProductMasukAll()
     {
         $product_masuk = Product_Masuk::all();
-        $pdf = PDF::loadView('product_masuk.productMasukAllPDF',compact('product_masuk'));
+        $pdf = PDF::loadView('gudang.product_masuk.productMasukAllPDF',compact('product_masuk'));
         return $pdf->download('Data Stok Masuk.pdf');
     }
 
     public function exportProductMasuk($id)
     {
         $product_masuk = Product_Masuk::findOrFail($id);
-        $pdf = PDF::loadView('product_masuk.productMasukPDF', compact('product_masuk'));
+        $pdf = PDF::loadView('gudang.product_masuk.productMasukPDF', compact('product_masuk'));
         return $pdf->download($product_masuk->id.' Struk Stok Masuk.pdf');
     }
 

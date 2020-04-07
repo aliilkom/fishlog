@@ -17,11 +17,10 @@ class CreateWarehousesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('nama');
-            $table->string('pemilik')->nullable();
-            $table->string('hp');
-            $table->string('lokasi');
-            $table->integer('ruang');
-            $table->integer('kapasitas');
+            $table->string('hp')->nullable();
+            $table->string('lokasi')->nullable();
+            $table->integer('ruang')->nullable();
+            $table->integer('kapasitas')->nullable();
             $table->integer('bysewa')->nullable();
             $table->integer('bybongkar')->nullable();
             $table->integer('bymuat')->nullable();

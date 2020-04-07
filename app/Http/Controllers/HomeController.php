@@ -36,12 +36,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function beranda1()
+    public function berandagudang()
     {
        
         
         $id = Auth::id();
         $products = Product::where('user_id', $id)
+        ->where('manajemen', 'gudang')
         ->orderBy('jumlah','DSC')
         ->take(5)
         ->get();
@@ -119,9 +120,9 @@ class HomeController extends Controller
         ->legend(false)
         ->responsive(true);
 
-        return view('beranda1', compact('products', 'productins', 'productouts', 'suppliers', 'customers', 'chart1', 'chart2', 'chart3', 'chart4', 'chart5'));
+        return view('berandagudang', compact('products', 'productins', 'productouts', 'suppliers', 'customers', 'chart1', 'chart2', 'chart3', 'chart4', 'chart5'));
     }
-    public function beranda2()
+    public function berandarental()
     {
         $id = Auth::id();
         $stockrentins = Stockrentin::where('user_id', $id)
@@ -139,7 +140,7 @@ class HomeController extends Controller
         ->get();
        
         $chart6 = Charts::create('bar', 'highcharts')
-        ->title("5 Stok Rental Masuk Terbanyak")
+        ->title("5 Stok Masuk Terbanyak")
         ->elementLabel("Jumlah Stok")
         ->labels($stockrentins->pluck('product')->pluck('nama')->toArray())
         ->values($stockrentins->pluck('total')->toArray())
@@ -148,7 +149,7 @@ class HomeController extends Controller
         ->responsive(true);
 
         $chart7 = Charts::create('bar', 'highcharts')
-        ->title("5 Stok Rental Keluar Terbanyak")
+        ->title("5 Stok Keluar Terbanyak")
         ->elementLabel("Jumlah Stok")
         ->labels($stockrentouts->pluck('product')->pluck('nama')->toArray())
         ->values($stockrentouts->pluck('total')->toArray())
@@ -156,7 +157,7 @@ class HomeController extends Controller
         ->legend(false)
         ->responsive(true);
 
-        return view('beranda2', compact('stockrentins','stockrentouts','chart6', 'chart7'));
+        return view('berandarental', compact('stockrentins','stockrentouts','chart6', 'chart7'));
     }
 
 }
