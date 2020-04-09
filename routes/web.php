@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
    
     //----------------------------WMS-------------------------------\\
     Route::resource('gudang','WarehouseController');
+    Route::get('/gudang/detail/{id}','WarehouseController@show');
     Route::get('/apiWarehouses','WarehouseController@apiWarehouses')->name('api.warehouses');
 
     Route::resource('barang','ProductController');

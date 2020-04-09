@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Warehouse;
+use App\Product;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth;
@@ -94,7 +95,17 @@ class WarehouseController extends Controller
       
         $warehouse = Warehouse::find($id);
        
-        return view('gudang.warehouses.detail', compact('warehouse'));
+        $product = Product::orderBy('nama','ASC')
+            ->where('warehouse_id', $id)
+            ->where('manajemen', 'gudang')
+            ->get();
+
+        $rentproduct = Product::orderBy('nama','ASC')
+            ->where('warehouse_id', $id)
+            ->where('manajemen', 'rental')
+            ->get();
+
+        return view('gudang.warehouses.detail', compact('warehouse', 'product', 'rentproduct'));
     }
 
     /**
@@ -196,7 +207,7 @@ class WarehouseController extends Controller
             })
             ->addColumn('action', function($warehouse){
                 return 
-                    '<a href="/gudang/detail" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Detail</a> ' .
+                    '<a href="/gudang/detail/'.$warehouse->id.'" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Detail</a> ' .
                     '<a onclick="editForm('. $warehouse->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Ubah</a> ' .
                     '<a onclick="deleteData('. $warehouse->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
             })
