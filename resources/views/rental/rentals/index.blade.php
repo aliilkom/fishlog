@@ -6,7 +6,7 @@
 @endsection
 
 @section('breadcrumb')
-    <li><a href="{{ url('beranda1') }}"><i class="fa fa-dashboard"></i>Manajemen Rental</a></li>
+    <li><a href="{{ url('berandarental') }}"><i class="fa fa-dashboard"></i>Manajemen Rental</a></li>
     <li class="active">Rental</li>
 @endsection
 
@@ -103,7 +103,7 @@
             $('input[name=_method]').val('PATCH');
             $('#modal-form form')[0].reset();
             $.ajax({
-                url: "{{ url('rental') }}" + '/' + id + "/edit",
+                url: "{{ url('rentalgudang') }}" + '/' + id + "/edit",
                 type: "GET",
                 dataType: "JSON",
                 success: function(data) {
@@ -137,7 +137,7 @@
                 
             }).then(function () {
                 $.ajax({
-                    url : "{{ url('rental') }}" + '/' + id,
+                    url : "{{ url('rentalgudang') }}" + '/' + id,
                     type : "POST",
                     data : {'_method' : 'DELETE', '_token' : csrf_token},
                     success : function(data) {
@@ -165,8 +165,8 @@
             $('#modal-form form').validator().on('submit', function (e) {
                 if (!e.isDefaultPrevented()){
                     var id = $('#id').val();
-                    if (save_method == 'add') url = "{{ url('rental') }}";
-                    else url = "{{ url('rental') . '/' }}" + id;
+                    if (save_method == 'add') url = "{{ url('rentalgudang') }}";
+                    else url = "{{ url('rentalgudang') . '/' }}" + id;
 
                     $.ajax({
                         url : url,

@@ -6,7 +6,7 @@
 @endsection
 
 @section('breadcrumb')
-    <li><a href="{{ url('beranda1') }}"><i class="fa fa-dashboard"></i>Manajemen Gudang</a></li>
+    <li><a href="{{ url('berandagudang') }}"><i class="fa fa-dashboard"></i>Manajemen Gudang</a></li>
     <li class="active">Gudang</li>
 @endsection
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
+use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -98,6 +100,12 @@ class SettingsController extends Controller
     public function updatePassword(Request $request)
     {
         $user = Auth::user();
+
+        Validator::extend('passcheck', function ($attribute, $value, $parameters) 
+        {
+            return Hash::check($value, Auth::user()->getAuthPassword());
+        });
+
         $this->validate($request, [
             'password' => 'required|passcheck:' . $user->password,
             'new_password' => 'required|confirmed|min:6',

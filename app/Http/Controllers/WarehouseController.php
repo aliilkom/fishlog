@@ -28,6 +28,9 @@ class WarehouseController extends Controller
         $warehouse = Warehouse::all();
         return view('gudang.warehouses.index', compact('user'));
     }
+       
+        
+    
 
     /**
      * Show the form for creating a new resource.
@@ -88,7 +91,10 @@ class WarehouseController extends Controller
      */
     public function show($id)
     {
-        //
+      
+        $warehouse = Warehouse::find($id);
+       
+        return view('gudang.warehouses.detail', compact('warehouse'));
     }
 
     /**
@@ -190,7 +196,7 @@ class WarehouseController extends Controller
             })
             ->addColumn('action', function($warehouse){
                 return 
-                    // '<a href="#" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Show</a> ' .
+                    '<a href="/gudang/detail" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Detail</a> ' .
                     '<a onclick="editForm('. $warehouse->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Ubah</a> ' .
                     '<a onclick="deleteData('. $warehouse->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
             })

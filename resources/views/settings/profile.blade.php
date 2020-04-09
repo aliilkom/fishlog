@@ -5,7 +5,7 @@
 @endsection
 
 @section('breadcrumb')
-    <li><a href="{{ url('beranda1') }}"><i class="fa fa-dashboard"></i> Beranda</a></li>
+    <li><a href="{{ url('berandagudang') }}"><i class="fa fa-dashboard"></i> Beranda</a></li>
     <li class="active">Profil</li>
 @endsection
 
@@ -43,23 +43,23 @@
                 <div class="box-body">
                     <table class="table table-striped">
                         <tr>
-                            <td class="text-muted">Nama</td>
+                            <td class="text-muted"><b>Nama</b></td>
                             <td>{{ auth()->user()->name }}</td>
                         </tr>
                         <tr>
-                            <td class="text-muted">Email</td>
+                            <td class="text-muted"><b>Email</b></td>
                             <td>{{ auth()->user()->email }}</td>
                         </tr>
                         <tr>
-                            <td class="text-muted">Alamat</td>
+                            <td class="text-muted"><b>Alamat</b></td>
                             <td>{{ auth()->user()->alamat }}</td>
                         </tr>
                         <tr>
-                            <td class="text-muted">Nomor HP</td>
+                            <td class="text-muted"><b>Nomor HP</b></td>
                             <td>{{ auth()->user()->hp }}</td>
                         </tr>
                         <tr>
-                            <td class="text-muted">Foto Profil</td>
+                            <td class="text-muted"><b>Foto Profil</b></td>
                             <td><img src="{{ asset('/img/'. auth()->user()->image) }}" class="img-circle img-responsive" alt="User Image"></td>
                         </tr>
                         <!-- <tr>
