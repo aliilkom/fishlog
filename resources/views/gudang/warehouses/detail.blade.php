@@ -125,5 +125,45 @@
         <!-- /.box-body -->
     </div>
      <!-- DataTables -->
+     <div class="box col-md-6">
+
+        <div class="box-header">
+            <h3 class="box-title">Barang Rental di {{$warehouse->nama}}</h3>
+        </div>
+
+        <!-- /.box-header -->
+        <div class="box-body">
+            <table id="product" class="table table-bordered">
+                <thead>
+                <tr>
+                <!-- <th>No</th> -->
+                    <th>Nama Barang</th>
+                    <th>SKU</th>
+                    <th>Stok</th>
+                    <th>Satuan</th>
+                    <th>Kategori</th>
+                    <th>Merek</th>
+                    <th>Spesifikasi</th>
+                </tr>
+                </thead>
+                @foreach($rentproduct as $p)
+                    <tbody>
+                        <td>{{ $p->nama }}</td>
+                        <td>{{ $p->sku }}</td>
+                        <td>{{ $p->jumlah }}</td>
+                        <td>{{ $p->satuan }}</td>
+                        <td>{{ $p->category->name }}</td>
+                        <td>{{ $p->merk->name }}</td>
+                        <td>{{ $p->spesifikasi }}</td>
+                        
+                    </tbody>
+                @endforeach
+
+                
+            </table>
+        </div>
+        <!-- /.box-body -->
+    </div>
+     <!-- DataTables -->
      
 @endsection

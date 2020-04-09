@@ -5,8 +5,8 @@
 @endsection
 
 @section('breadcrumb')
-    <li><a href="{{ url('berandagudang') }}"><i class="fa fa-dashboard"></i> Beranda</a></li>
-    <li class="active">Profil</li>
+    <li><a href="{{ url('berandagudang') }}"><i class="fa fa-dashboard"></i>Beranda</a></li>
+    <li class="active"><a href="{{ url('settings/profile') }}"><i class="fa fa-user"></i>Profil</a></li>
 @endsection
 
 @section('content')
@@ -36,9 +36,9 @@
           </div>
           <div class="col-md-9">
             <div class="box box-primary">
-                <!-- <div class="box-header with-border">
-                    <h3 class="box-title">Profil</h3>
-                </div> -->
+                <div class="box-header with-border">
+                    <h3 class="box-title">Informasi Profil</h3>
+                </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                     <table class="table table-striped">

@@ -7,7 +7,8 @@
 
 @section('breadcrumb')
     <li><a href="{{ url('berandarental') }}"><i class="fa fa-dashboard"></i>Manajemen Rental</a></li>
-    <li class="active">Tagihan</li>
+    
+    <li class="active"><a href="{{ url('tagihan') }}"><i class="fa fa-money"></i>Tagihan</a></li>
 @endsection
 
 @section('top')
