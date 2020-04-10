@@ -17,7 +17,7 @@
 
         <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-square" src="{{$renter->image}}" alt="User profile picture">
+              <img class="profile-user-img img-responsive img-square" src="{{$renter->image}}">
 
               <h3 class="profile-username text-center">{{ $renter->nama }}</h3>
               
@@ -43,7 +43,7 @@
           <div class="col-md-9">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Informasi Pembeli</h3>
+                    <h3 class="box-title">Informasi Penyewa</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">

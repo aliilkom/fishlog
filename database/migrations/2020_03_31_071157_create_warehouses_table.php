@@ -24,7 +24,7 @@ class CreateWarehousesTable extends Migration
             // $table->integer('bysewa')->nullable();
             // $table->integer('bybongkar')->nullable();
             // $table->integer('bymuat')->nullable();
-            $table->string('image')->default('/upload/gudang/fishlog.jpg');
+            $table->string('image')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

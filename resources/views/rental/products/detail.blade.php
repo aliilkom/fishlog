@@ -17,7 +17,7 @@
 
         <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="{{$product->image}}" alt="User profile picture">
+              <img class="profile-user-img img-responsive img-circle" src="{{$product->image}}">
 
               <h3 class="profile-username text-center">{{ $product->nama }}</h3>
               

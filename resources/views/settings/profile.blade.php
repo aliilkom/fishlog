@@ -16,7 +16,7 @@
 
         <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="{{ asset('/img/'. auth()->user()->image) }}" alt="User profile picture">
+              <img class="profile-user-img img-responsive img-circle" src="{{ asset('/img/'. auth()->user()->image) }}">
 
               <h3 class="profile-username text-center">{{ auth()->user()->name }}</h3>
 
@@ -60,7 +60,7 @@
                         </tr>
                         <tr>
                             <td class="text-muted"><b>Foto Profil</b></td>
-                            <td><img src="{{ asset('/img/'. auth()->user()->image) }}" class="img-square img-thumbnail img-responsive" style="width:50%" alt="User Image"></td>
+                            <td><img src="{{ asset('/img/'. auth()->user()->image) }}" class="img-square img-thumbnail img-responsive" style="width:50%"></td>
                         </tr>
                         <!-- <tr>
                             <td class="text-muted">Login Terakhir</td>

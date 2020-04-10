@@ -18,7 +18,7 @@
                     <div class="box-body">
                         <div class="form-group">
                             <label >Nama Barang</label>
-                            {!! Form::select('product_id', $products, null, ['class' => 'form-control select', 'placeholder' => '-- Pilih Barang --', 'id' => 'product_id']) !!}
+                            {!! Form::select('product_id', $products, null, [ 'required','class' => 'form-control select', 'placeholder' => '-- Pilih Barang --', 'id' => 'product_id']) !!}
                             <span class="help-block with-errors"></span>
                             <div>Belum ada Barang?
                             <a href="barang">Tambah</a></div>
@@ -26,7 +26,7 @@
 
                         <div class="form-group">
                             <label >Pembeli</label>
-                            {!! Form::select('customer_id', $customers, null, ['class' => 'form-control select', 'placeholder' => '-- Pilih Pembeli --', 'id' => 'customer_id']) !!}
+                            {!! Form::select('customer_id', $customers, null, [ 'required','class' => 'form-control select', 'placeholder' => '-- Pilih Pembeli --', 'id' => 'customer_id']) !!}
                             <span class="help-block with-errors"></span>
                             <div>Belum ada Pembeli?
                             <a href="pembeli">Tambah</a></div>

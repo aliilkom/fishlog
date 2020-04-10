@@ -40,7 +40,7 @@
 
                         <div class="form-group">
                             <label >Jumlah</label>
-                            <input type="number" class="form-control" id="jumlah" name="jumlah">
+                            <input type="number" class="form-control" id="jumlah" name="jumlah" required>
                             <span class="help-block with-errors"></span>
                         </div>
 
@@ -61,7 +61,7 @@
   
                             <div class="form-group col-md-5">
                                 <label >Kategori</label>
-                                {!! Form::select('category_id', $category, null, ['class' => 'form-control select', 'placeholder' => '-- Pilih Kategori --', 'id' => 'category_id']) !!}
+                                {!! Form::select('category_id', $category, null, [ 'required','class' => 'form-control select', 'placeholder' => '-- Pilih Kategori --', 'id' => 'category_id']) !!}
                                 <span class="help-block with-errors"></span>
                                 <div>Belum ada Kategori?
                                 <a href="rentalkategori"> Tambah</a></div>
@@ -69,7 +69,7 @@
 
                             <div class="form-group col-md-5 col-md-push-2">
                                 <label >Merek</label>
-                                {!! Form::select('merk_id', $merk, null, ['class' => 'form-control select', 'placeholder' => '-- Pilih Merek --', 'id' => 'merk_id']) !!}
+                                {!! Form::select('merk_id', $merk, null, [ 'required','class' => 'form-control select', 'placeholder' => '-- Pilih Merek --', 'id' => 'merk_id']) !!}
                                 <span class="help-block with-errors"></span>
                                 <div>Belum ada Merek?
                                 <a href="rentalmerek"> Tambah</a></div>
