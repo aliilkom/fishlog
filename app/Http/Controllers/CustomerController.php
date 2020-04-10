@@ -55,7 +55,7 @@ class CustomerController extends Controller
         ]);
 
         $input = $request->all();
-        $input['image'] = null;
+        // $input['image'] = null;
 
         if ($request->hasFile('image')){
             $input['image'] = '/upload/pembeli/'.str_slug($input['nama'], '-').'.'.$request->image->getClientOriginalExtension();

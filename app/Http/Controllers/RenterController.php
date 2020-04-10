@@ -56,7 +56,7 @@ class RenterController extends Controller
         ]);
 
         $input = $request->all();
-        $input['image'] = null;
+        // $input['image'] = null;
 
         if ($request->hasFile('image')){
             $input['image'] = '/upload/penyewa/'.str_slug($input['nama'], '-').'.'.$request->image->getClientOriginalExtension();

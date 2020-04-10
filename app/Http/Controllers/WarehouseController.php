@@ -68,7 +68,7 @@ class WarehouseController extends Controller
         ]);
 
         $input = $request->all();
-        $input['image'] = null;
+        // $input['image'] = null;
 
         if ($request->hasFile('image')){
             $input['image'] = '/upload/gudang/'.str_slug($input['nama'], '-').'.'.$request->image->getClientOriginalExtension();

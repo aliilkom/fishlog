@@ -56,7 +56,7 @@ class SupplierController extends Controller
         ]);
 
         $input = $request->all();
-        $input['image'] = null;
+        // $input['image'] = null;
 
         if ($request->hasFile('image')){
             $input['image'] = '/upload/penyuplai/'.str_slug($input['nama'], '-').'.'.$request->image->getClientOriginalExtension();

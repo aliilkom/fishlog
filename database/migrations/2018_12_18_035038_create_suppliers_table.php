@@ -20,7 +20,7 @@ class CreateSuppliersTable extends Migration
             $table->text('alamat')->nullable();
             $table->string('perusahaan')->nullable();
             $table->string('telepon')->nullable();
-            $table->string('image')->nullable();
+            $table->string('image')->default('/upload/penyuplai/fishlog.jpg');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

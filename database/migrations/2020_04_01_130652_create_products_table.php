@@ -27,7 +27,7 @@ class CreateProductsTable extends Migration
             $table->integer('tagihan')->nullable();
             $table->string('satuan')->nullable();
             $table->string('spesifikasi')->nullable();
-            $table->string('image')->nullable();
+            $table->string('image')->default('/upload/barang/fishlog.jpg');
             $table->string('manajemen')->nullable();
             $table->integer('bysewa')->nullable();
             $table->integer('bybongkar')->nullable();
