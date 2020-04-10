@@ -21,24 +21,24 @@
                             <input type="text" class="form-control" id="nama" name="nama"  autofocus required>
                             <span class="help-block with-errors"></span>
                         </div>
+                        <div class="form-group">
+                            <label >Perusahaan</label>
+                            <input type="text" class="form-control" id="perusahaan" name="perusahaan"   required>
+                            <span class="help-block with-errors"></span>
+                        </div>
 
+                        <div class="form-group">
+                            <label >Telepon</label>
+                            <input type="text" class="form-control" id="telepon" name="telepon"   required>
+                            <span class="help-block with-errors"></span>
+                        </div>
                         <div class="form-group">
                             <label >Alamat</label>
                             <input type="text" class="form-control" id="alamat" name="alamat"   required>
                             <span class="help-block with-errors"></span>
                         </div>
 
-                        <div class="form-group">
-                            <label >Email</label>
-                            <input type="email" class="form-control" id="email" name="email"   required>
-                            <span class="help-block with-errors"></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label >Nomor HP</label>
-                            <input type="text" class="form-control" id="telepon" name="telepon"   required>
-                            <span class="help-block with-errors"></span>
-                        </div>
+                       
                         <div class="form-group">
                             <label >Foto Identitas</label>
                             <input type="file" class="form-control" id="image" name="image" >

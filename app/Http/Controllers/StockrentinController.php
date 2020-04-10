@@ -62,7 +62,6 @@ class StockrentinController extends Controller
             'product_id'     => 'required',
             'renter_id'    => 'required',
             'jumlah'        => 'required',
-            'pembayaran'     => 'required',
             'tanggal'        => 'required'
         ]);
 
@@ -75,7 +74,7 @@ class StockrentinController extends Controller
 
         return response()->json([
             'success'    => true,
-            'message'    => 'Stok Keluar Ditambah'
+            'message'    => 'Stok Masuk Ditambah'
         ]);
 
     }
@@ -116,7 +115,6 @@ class StockrentinController extends Controller
             'product_id'     => 'required',
             'renter_id'    => 'required',
             'jumlah'         => 'required',
-            'pembayaran'     => 'required',
             'tanggal'        => 'required'
         ]);
 
@@ -129,7 +127,7 @@ class StockrentinController extends Controller
 
         return response()->json([
             'success'    => true,
-            'message'    => 'Stok Keluar Diubah'
+            'message'    => 'Stok Masuk Diubah'
         ]);
     }
 
@@ -145,7 +143,7 @@ class StockrentinController extends Controller
 
         return response()->json([
             'success'    => true,
-            'message'    => 'Stok Keluar Dihapus'
+            'message'    => 'Stok Masuk Dihapus'
         ]);
     }
 

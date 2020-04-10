@@ -5,9 +5,9 @@
     <small>Manajemen Gudang</small>
 @endsection
 @section('breadcrumb')
-    <li><a href="{{ url('berandagudang') }}"><i class="fa fa-dashboard"></i> Beranda</a></li>
-    <li><a href="{{ url('gudang') }}"><i class="fa fa-truck"></i> Gudang</a></li>
-    <li class="active"><i class="fa fa-thumb-tack"></i> Detail</li>
+    <li><a href="{{ url('berandagudang') }}"><i class="fa fa-dashboard"></i>Manajemen Gudang</a></li>
+    <li><a href="{{ url('gudang') }}"><i class="fa fa-truck"></i>Gudang</a></li>
+    <li class="active"><a href="#"><i class="fa fa-thumb-tack"></i>Detail</a></li>
 @endsection
 
 @section('content')

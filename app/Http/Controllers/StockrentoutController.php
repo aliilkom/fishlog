@@ -63,7 +63,6 @@ class StockrentoutController extends Controller
             'product_id'     => 'required',
             'renter_id'    => 'required',
             'jumlah'         => 'required',
-            'pembayaran'     => 'required',
             'tanggal'        => 'required'
         ]);
 
@@ -117,7 +116,6 @@ class StockrentoutController extends Controller
             'product_id'     => 'required',
             'renter_id'    => 'required',
             'jumlah'         => 'required',
-            'pembayaran'     => 'required',
             'tanggal'        => 'required'
         ]);
 

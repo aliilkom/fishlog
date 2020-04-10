@@ -5,7 +5,7 @@
 @endsection
 
 @section('breadcrumb')
-<li><a href="{{ url('berandagudang') }}"><i class="fa fa-dashboard"></i>Beranda</a></li>
+<li><a href="{{ url('berandagudang') }}"><i class="fa fa-dashboard"></i>Manajemen Gudang</a></li>
     <li><a href="{{ url('/settings/profile/') }}"><i class="fa fa-user"></i>Profil</a></li>
     <li class="active"><a href="{{ url('/settings/password') }}"><i class="fa fa-edit"></i>Ubah Password</a></li>
 @endsection

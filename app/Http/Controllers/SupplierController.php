@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Exports\ExportSuppliers;
 use App\Imports\SuppliersImport;
 use App\Supplier;
+use App\Product_Masuk;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth;
@@ -51,7 +52,6 @@ class SupplierController extends Controller
         $this->validate($request, [
             'nama'      => 'required',
             'alamat'    => 'required',
-            'email'     => 'required|unique:suppliers',
             'telepon'   => 'required',
         ]);
 
@@ -80,7 +80,14 @@ class SupplierController extends Controller
      */
     public function show($id)
     {
-        //
+      
+        $supplier = Supplier::find($id);
+
+        $productin = Product_Masuk::orderBy('tanggal','DSC')
+            ->where('supplier_id', $id)
+            ->get();
+
+        return view('gudang.suppliers.detail', compact('supplier','productin'));
     }
 
     /**
@@ -107,7 +114,6 @@ class SupplierController extends Controller
         $this->validate($request, [
             'nama'      => 'required|string',
             'alamat'    => 'required',
-            'email'     => 'required',
             'telepon'   => 'required',
         ]);
 
@@ -168,7 +174,7 @@ class SupplierController extends Controller
             })
             ->addColumn('action', function($suppliers){
                 return 
-                    // '<a href="#" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Show</a> ' .
+                    '<a href="/penyuplai/detail/'.$suppliers->id.'" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Detail</a> ' .
                     '<a onclick="editForm('. $suppliers->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Ubah</a> ' .
                     '<a onclick="deleteData('. $suppliers->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
             })

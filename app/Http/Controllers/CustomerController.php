@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Customer;
+use App\Product_Keluar;
 use App\Exports\ExportCustomers;
 use App\Imports\CustomersImport;
 use Illuminate\Http\Request;
@@ -50,7 +51,6 @@ class CustomerController extends Controller
         $this->validate($request, [
             'nama'      => 'required',
             'alamat'    => 'required',
-            'email'     => 'required|unique:customers',
             'telepon'   => 'required',
         ]);
 
@@ -79,7 +79,14 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        //
+      
+        $customer = Customer::find($id);
+
+        $productout = Product_Keluar::orderBy('tanggal','DSC')
+            ->where('customer_id', $id)
+            ->get();
+
+        return view('gudang.customers.detail', compact('customer','productout'));
     }
 
     /**
@@ -106,7 +113,6 @@ class CustomerController extends Controller
         $this->validate($request, [
             'nama'      => 'required|string',
             'alamat'    => 'required',
-            'email'     => 'required',
             'telepon'   => 'required',
         ]);
         $input = $request->all();
@@ -168,7 +174,7 @@ class CustomerController extends Controller
             ->addColumn('action', function($customer){
                 return 
                 
-                    // '<a href="#" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Show</a> ' .
+                    '<a href="/pembeli/detail/'.$customer->id.'" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Detail</a> ' .
                     '<a onclick="editForm('. $customer->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Ubah</a> ' .
                     '<a onclick="deleteData('. $customer->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
             })

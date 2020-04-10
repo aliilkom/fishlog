@@ -22,7 +22,8 @@
                             <label >Gudang</label>
                             {!! Form::select('warehouse_id', $warehouse, null, ['class' => 'form-control select', 'placeholder' => '-- Pilih Gudang --', 'id' => 'warehouse_id', 'required']) !!}
                             <span class="help-block with-errors"></span>
-                            <a href="gudang"> Tambah Gudang</a>
+                            <div>Belum ada Gudang?
+                            <a href="gudang">Tambah</a></div>
                         </div>
 
                         <div class="form-group">
@@ -62,14 +63,16 @@
                                 <label >Kategori</label>
                                 {!! Form::select('category_id', $category, null, ['class' => 'form-control select', 'placeholder' => '-- Pilih Kategori --', 'id' => 'category_id']) !!}
                                 <span class="help-block with-errors"></span>
-                                <a href="rentalkategori"> Tambah Kategori</a>
+                                <div>Belum ada Kategori?
+                                <a href="rentalkategori"> Tambah</a></div>
                             </div>
 
                             <div class="form-group col-md-5 col-md-push-2">
                                 <label >Merek</label>
                                 {!! Form::select('merk_id', $merk, null, ['class' => 'form-control select', 'placeholder' => '-- Pilih Merek --', 'id' => 'merk_id']) !!}
                                 <span class="help-block with-errors"></span>
-                                <a href="rentalmerek"> Tambah Merek</a>
+                                <div>Belum ada Merek?
+                                <a href="rentalmerek"> Tambah</a></div>
                             </div>
 
                         </div>

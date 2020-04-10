@@ -47,32 +47,33 @@
         <tr>
             <td><b>Tanggal Keluar</b></td>
             <td>: {{ $Stockrentout->tanggal }}</td>
-            <td><b>Telepon</b></td>
-            <td>: {{ $Stockrentout->renter->telepon }}</td>
+            <td><b>Perusahaan</b></td>
+            <td>: {{ $Stockrentout->renter->perusahaan }}</td>
+            
             
         </tr>
 
         <tr>
             <td><b>Gudang</b></td>
             <td >: {{ $Stockrentout->product->warehouse->nama }}</td>
-            <td><b>Alamat</b></td>
-            <td>: {{ $Stockrentout->renter->alamat }}</td>
+            <td><b>Telepon</b></td>
+            <td>: {{ $Stockrentout->renter->telepon }}</td>
             
         </tr>
         
         <tr>
             <td><b>Barang</b></td>
             <td >: {{ $Stockrentout->product->nama }}</td>
-            <td><b>Email</b></td>
-            <td>: {{ $Stockrentout->renter->email }}</td>
+            <td><b>Alamat</b></td>
+            <td>: {{ $Stockrentout->renter->alamat }}</td>
            
         </tr>
 
         <tr>
             <td><b>Stok Keluar</b></td>
             <td >: {{ $Stockrentout->jumlah }}</td>
-            <td><b>Pembayaran</b></td>
-            <td>: {{ $Stockrentout->pembayaran }}</td>
+            <td><b></b></td>
+            <td></td>
            
         </tr>
 

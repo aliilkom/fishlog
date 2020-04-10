@@ -54,7 +54,7 @@
             </a>
                     <ul class="treeview-menu">
                         <li class=""><a href="{{ url('berandarental') }}"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
-                        <li class=""><a href="{{ route('rentalgudang.index') }}"><i class="fa fa-university"></i> <span>Gudang</span></a></li>
+                        <!-- <li class=""><a href="{{ route('rentalgudang.index') }}"><i class="fa fa-university"></i> <span>Gudang</span></a></li> -->
                         <li class=""><a href="{{ route('rentalbarang.index') }}"><i class="fa fa-database"></i> <span>Barang</span></a></li>
                         <li class=""><a href="{{ route('rentalkategori.index') }}"><i class="fa fa-tags"></i> <span>Kategori Barang</span></a></li>
                         <li class=""><a href="{{ route('rentalmerek.index') }}"><i class="fa fa-flag"></i> <span>Merek Barang</span></a></li>

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Warehouse extends Model
 {
-    protected $fillable = ['user_id','nama','pemilik','hp','lokasi', 'ruang', 'kapasitas', 'bysewa', 'bybongkar', 'bymuat', 'image'];
+    protected $fillable = ['user_id','nama','pemilik','hp','lokasi', 'ruang', 'kapasitas', 'image'];
 
     protected $hidden = ['created_at','updated_at'];
 

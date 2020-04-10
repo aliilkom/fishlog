@@ -5,7 +5,7 @@
 @endsection
 
 @section('breadcrumb')
-    <li><a href="{{ url('berandagudang') }}"><i class="fa fa-dashboard"></i>Beranda</a></li>
+    <li><a href="{{ url('berandagudang') }}"><i class="fa fa-dashboard"></i>Manajemen Gudang</a></li>
     <li class="active"><a href="{{ url('settings/profile') }}"><i class="fa fa-user"></i>Profil</a></li>
 @endsection
 
@@ -55,12 +55,12 @@
                             <td>{{ auth()->user()->alamat }}</td>
                         </tr>
                         <tr>
-                            <td class="text-muted"><b>Nomor HP</b></td>
+                            <td class="text-muted"><b>Telepon</b></td>
                             <td>{{ auth()->user()->hp }}</td>
                         </tr>
                         <tr>
                             <td class="text-muted"><b>Foto Profil</b></td>
-                            <td><img src="{{ asset('/img/'. auth()->user()->image) }}" class="img-circle img-responsive" alt="User Image"></td>
+                            <td><img src="{{ asset('/img/'. auth()->user()->image) }}" class="img-square img-thumbnail img-responsive" style="width:50%" alt="User Image"></td>
                         </tr>
                         <!-- <tr>
                             <td class="text-muted">Login Terakhir</td>

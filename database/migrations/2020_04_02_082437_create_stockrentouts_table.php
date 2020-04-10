@@ -21,6 +21,7 @@ class CreateStockrentoutsTable extends Migration
             $table->integer('jumlah')->nullable();
             $table->string('pembayaran')->nullable();
             $table->date('tanggal')->nullable();
+            $table->string('keterangan')->default("Mengeluarkan Barang");
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

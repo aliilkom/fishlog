@@ -29,6 +29,9 @@ class CreateProductsTable extends Migration
             $table->string('spesifikasi')->nullable();
             $table->string('image')->nullable();
             $table->string('manajemen')->nullable();
+            $table->integer('bysewa')->nullable();
+            $table->integer('bybongkar')->nullable();
+            $table->integer('bymuat')->nullable();
             $table->timestamps();
             
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

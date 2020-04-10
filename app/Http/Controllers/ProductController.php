@@ -6,6 +6,10 @@ use App\Warehouse;
 use App\Category;
 use App\Merk;
 use App\Product;
+use App\Supplier;
+use App\Customer;
+use App\Product_Masuk;
+use App\Product_Keluar;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth;
@@ -113,7 +117,18 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+      
+        $product = Product::find($id);
+
+        $productin = Product_Masuk::orderBy('product_id','ASC')
+            ->where('product_id', $id)
+            ->get();
+        
+        $productout = Product_Keluar::orderBy('product_id','ASC')
+            ->where('product_id', $id)
+            ->get();
+
+        return view('gudang.products.detail', compact('product','productin', 'productout'));
     }
 
     /**
@@ -240,7 +255,7 @@ class ProductController extends Controller
             })
             ->addColumn('action', function($product){
                 return 
-                    // '<a href="#" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Show</a> ' .
+                    '<a href="/barang/detail/'.$product->id.'" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Detail</a> ' .
                     '<a onclick="editForm('. $product->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Ubah</a> ' .
                     '<a onclick="deleteData('. $product->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
             })

@@ -33,9 +33,9 @@
                 <tr>
                     <!-- <th>No</th> -->
                     <th>Nama</th>
+                    <th>Perusahaan</th>
+                    <th>Telepon</th>
                     <th>Alamat</th>
-                    <th>Email</th>
-                    <th>Nomor HP</th>
                     <th>Foto Identitas</th>
                     <th>Opsi</th>
                 </tr>
@@ -83,9 +83,9 @@
             columns: [
                 // {data: 'id', name: 'id'},
                 {data: 'nama', name: 'nama'},
-                {data: 'alamat', name: 'alamat'},
-                {data: 'email', name: 'email'},
+                {data: 'perusahaan', name: 'perusahaan'},
                 {data: 'telepon', name: 'telepon'},
+                {data: 'alamat', name: 'alamat'},
                 {data: 'show_photo', name: 'show_photo'},
                 {data: 'action', name: 'action', orderable: false, searchable: false}
             ]
@@ -114,7 +114,7 @@
                     $('#id').val(data.id);
                     $('#nama').val(data.nama);
                     $('#alamat').val(data.alamat);
-                    $('#email').val(data.email);
+                    $('#perusahaan').val(data.perusahaan);
                     $('#telepon').val(data.telepon);
                 },
                 error : function() {

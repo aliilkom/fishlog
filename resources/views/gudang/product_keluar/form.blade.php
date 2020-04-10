@@ -18,16 +18,18 @@
                     <div class="box-body">
                         <div class="form-group">
                             <label >Nama Barang</label>
-                            {!! Form::select('product_id', $products, null, ['class' => 'form-control select', 'placeholder' => '-- Choose Product --', 'id' => 'product_id']) !!}
+                            {!! Form::select('product_id', $products, null, ['class' => 'form-control select', 'placeholder' => '-- Pilih Barang --', 'id' => 'product_id']) !!}
                             <span class="help-block with-errors"></span>
-                            <a href="barang"> Tambah Barang</a>
+                            <div>Belum ada Barang?
+                            <a href="barang">Tambah</a></div>
                         </div>
 
                         <div class="form-group">
                             <label >Pembeli</label>
-                            {!! Form::select('customer_id', $customers, null, ['class' => 'form-control select', 'placeholder' => '-- Choose Customer --', 'id' => 'customer_id']) !!}
+                            {!! Form::select('customer_id', $customers, null, ['class' => 'form-control select', 'placeholder' => '-- Pilih Pembeli --', 'id' => 'customer_id']) !!}
                             <span class="help-block with-errors"></span>
-                            <a href="pembeli"> Tambah Pembeli</a>
+                            <div>Belum ada Pembeli?
+                            <a href="pembeli">Tambah</a></div>
                         </div>
 
                         <div class="form-group">
@@ -38,8 +40,14 @@
 
                         <div class="form-group">
                             <label >Pembayaran</label>
-                            <input type="text" class="form-control" id="pembayaran" name="pembayaran" required>
-                            <span class="help-block with-errors"></span>
+                            <select class="form-control" name="pembayaran" id="pembayaran" required onchange="showfield(this.options[this.selectedIndex].value)">
+                                <option value="" disabled selected>-- Pilih Pembayaran --</option>
+                                <option>Cash</option>
+                                <option>Cicil</option>
+                                <option value="Tempo">Tempo</option>
+                            </select>
+                            <br>
+                            <div id="div1" display="none;"></div>
                         </div>
 
                         <div class="form-group">
@@ -71,3 +79,9 @@
     <!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
+<script type="text/javascript">
+    function showfield(name){
+    if(name=='Tempo')document.getElementById('div1').innerHTML='<b>Tempo</b> <input class="form-control" type="text" name="pembayaran" />';
+    else document.getElementById('div1').innerHTML='';
+    }
+</script>

@@ -69,7 +69,7 @@ class MoveController extends Controller
 
         return response()->json([
             'success'    => true,
-            'message'    => 'Stok Keluar Ditambah'
+            'message'    => 'Pindah Barang Ditambah'
         ]);
 
     }
@@ -119,7 +119,7 @@ class MoveController extends Controller
 
         return response()->json([
             'success'    => true,
-            'message'    => 'Stok Keluar Diubah'
+            'message'    => 'Pindah Barang Diubah'
         ]);
     }
 
@@ -135,7 +135,7 @@ class MoveController extends Controller
 
         return response()->json([
             'success'    => true,
-            'message'    => 'Stok Keluar Dihapus'
+            'message'    => 'Pindah Barang Dihapus'
         ]);
     }
 

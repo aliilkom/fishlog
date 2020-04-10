@@ -42,7 +42,6 @@
                     <th>Stok Barang</th>
                     <th>Penyewa</th>
                     <th>Stok Masuk</th>
-                    <th>Pembayaran</th>
                     <th>Tanggal Masuk</th>
                     <th>Opsi</th>
                 </tr>
@@ -76,7 +75,6 @@
                     <th>Nama Barang</th>
                     <th>Penyewa</th>
                     <th>Stok Masuk</th>
-                    <th>Pembayaran</th>
                     <th>Tanggal Masuk</th>
                     <th>Cetak Struk</th>
                 </tr>
@@ -88,7 +86,6 @@
                         <td>{{ $i->product->nama }}</td>
                         <td>{{ $i->renter->nama }}</td>
                         <td>{{ $i->jumlah}}</td>
-                        <td>{{ $i->pembayaran }}</td>
                         <td>{{ $i->tanggal }}</td>
                         <td>
                             <a href="{{ route('exportPDF.Stockrentin', [ 'id' => $i->id ]) }}" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-print"></i> Cetak</a>
@@ -175,7 +172,6 @@
                 {data: 'stok', name: 'stok'},
                 {data: 'renter_name', name: 'renter_name'},
                 {data: 'jumlah', name: 'jumlah'},
-                {data: 'pembayaran', name: 'pembayaran'},
                 {data: 'tanggal', name: 'tanggal'},
                 {data: 'action', name: 'action', orderable: false, searchable: false}
             ]
@@ -205,7 +201,6 @@
                     $('#product_id').val(data.product_id);
                     $('#renter_id').val(data.renter_id);
                     $('#jumlah').val(data.jumlah);
-                    $('#pembayaran').val(data.pembayaran);
                     $('#tanggal').val(data.tanggal);
                 },
                 error : function() {

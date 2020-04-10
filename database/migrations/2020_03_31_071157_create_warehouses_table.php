@@ -21,9 +21,9 @@ class CreateWarehousesTable extends Migration
             $table->string('lokasi')->nullable();
             $table->integer('ruang')->nullable();
             $table->integer('kapasitas')->nullable();
-            $table->integer('bysewa')->nullable();
-            $table->integer('bybongkar')->nullable();
-            $table->integer('bymuat')->nullable();
+            // $table->integer('bysewa')->nullable();
+            // $table->integer('bybongkar')->nullable();
+            // $table->integer('bymuat')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
 

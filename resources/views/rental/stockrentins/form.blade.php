@@ -18,16 +18,18 @@
                     <div class="box-body">
                         <div class="form-group">
                             <label >Nama Barang</label>
-                            {!! Form::select('product_id', $products, null, ['class' => 'form-control select', 'placeholder' => '-- Choose Product --', 'id' => 'product_id']) !!}
+                            {!! Form::select('product_id', $products, null, ['class' => 'form-control select', 'placeholder' => '-- Pilih Barang --', 'id' => 'product_id']) !!}
                             <span class="help-block with-errors"></span>
-                            <a href="barang"> Tambah Barang</a>
+                            <div>Belum ada Barang?
+                            <a href="rentalbarang"> Tambah</a></div>
                         </div>
 
                         <div class="form-group">
                             <label >Penyewa</label>
-                            {!! Form::select('renter_id', $renters, null, ['class' => 'form-control select', 'placeholder' => '-- Choose Renter --', 'id' => 'renter_id']) !!}
+                            {!! Form::select('renter_id', $renters, null, ['class' => 'form-control select', 'placeholder' => '-- Pilih Penyewa --', 'id' => 'renter_id']) !!}
                             <span class="help-block with-errors"></span>
-                            <a href="penyewa"> Tambah Penyewa</a>
+                            <div>Belum ada Penyewa?
+                            <a href="penyewa"> Tambah</a></div>
                         </div>
 
                         <div class="form-group">
@@ -36,12 +38,7 @@
                             <span class="help-block with-errors"></span>
                         </div>
 
-                        <div class="form-group">
-                            <label >Pembayaran</label>
-                            <input type="text" class="form-control" id="pembayaran" name="pembayaran" required>
-                            <span class="help-block with-errors"></span>
-                        </div>
-
+                    
                         <div class="form-group">
                             <label >Tanggal Masuk</label>
                             <input data-date-format='yyyy-mm-dd' type="text" class="form-control" id="tanggal" name="tanggal"   required>

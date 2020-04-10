@@ -47,24 +47,24 @@
         <tr>
             <td><b>Tanggal Keluar</b></td>
             <td>: {{ $product_keluar->tanggal }}</td>
-            <td><b>Telepon</b></td>
-            <td>: {{ $product_keluar->customer->telepon }}</td>
+            <td><b>Perusahaan</b></td>
+            <td>: {{ $product_keluar->customer->perusahaan }}</td>
             
         </tr>
 
         <tr>
             <td><b>Gudang</b></td>
             <td >: {{ $product_keluar->product->warehouse->nama }}</td>
-            <td><b>Alamat</b></td>
-            <td>: {{ $product_keluar->customer->alamat }}</td>
+            <td><b>Telepon</b></td>
+            <td>: {{ $product_keluar->customer->telepon }}</td>
             
         </tr>
         
         <tr>
             <td><b>Barang</b></td>
             <td >: {{ $product_keluar->product->nama }}</td>
-            <td><b>Email</b></td>
-            <td>: {{ $product_keluar->customer->email }}</td>
+            <td><b>Alamat</b></td>
+            <td>: {{ $product_keluar->customer->alamat }}</td>
            
         </tr>
 

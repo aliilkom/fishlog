@@ -6,6 +6,9 @@ use App\Warehouse;
 use App\Category;
 use App\Merk;
 use App\Product;
+use App\Renter;
+use App\Stockrentin;
+use App\Stockrentout;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth;
@@ -113,7 +116,18 @@ class RentalProductController extends Controller
      */
     public function show($id)
     {
-        //
+      
+        $product = Product::find($id);
+
+        $productin = Stockrentin::orderBy('product_id','ASC')
+            ->where('product_id', $id)
+            ->get();
+        
+        $productout = Stockrentout::orderBy('product_id','ASC')
+            ->where('product_id', $id)
+            ->get();
+
+        return view('rental.products.detail', compact('product','productin', 'productout'));
     }
 
     /**
@@ -240,7 +254,7 @@ class RentalProductController extends Controller
             })
             ->addColumn('action', function($product){
                 return 
-                    // '<a href="#" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Show</a> ' .
+                    '<a href="/rentalbarang/detail/'.$product->id.'" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Detail</a> ' .
                     '<a onclick="editForm('. $product->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Ubah</a> ' .
                     '<a onclick="deleteData('. $product->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
             })

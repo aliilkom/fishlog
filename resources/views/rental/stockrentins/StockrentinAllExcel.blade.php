@@ -46,7 +46,6 @@
             <td><b>Barang</b></td>
             <td><b>Stok Masuk</b></td>
             <td><b>Penyewa</b></td>
-            <td><b>Pembayaran</b></td>
             <td><b>Tanggal Masuk</b></td>
     </tr>
     </thead>
@@ -57,7 +56,6 @@
                 <td>{{ $p->product->nama }}</td>
                 <td>{{ $p->jumlah }}</td>
                 <td>{{ $p->renter->nama }}</td>
-                <td>{{ $p->pembayaran }}</td>
                 <td>{{ $p->tanggal }}</td>
         </tr>
         </tbody>

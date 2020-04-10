@@ -1,14 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container panel-body ">
     <div class="row">
         <div class="col-md-12"><br></br><br></br><br></br>
             <div class="panel panel-default">
                 <div class="panel-heading text-center"><img src="/img/logo.png"></div>
+                
+                <div class="text-center">
+                <b>Warehouse Management System</b>
+                </div>
                 &nbsp
-                <!-- <h6 class="text-center">
-                Bersama-sama membangun ekosistem dan integrasi jaringan gudang beku terbesar di Indonesia
-                </h6> -->
+
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
@@ -16,7 +19,7 @@
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             
 
-                            <div class="col-md-6 mx-auto">
+                            <div class="col-md-4 mx-auto">
                                 <input id="email" placeholder="Email" type="email" class="form-control text-center" name="email" value="{{ old('email') }}" required autofocus>
 
                                 @if ($errors->has('email'))
@@ -29,7 +32,7 @@
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
 
-                            <div class="col-md-6 mx-auto">
+                            <div class="col-md-4 mx-auto">
                                 <input id="password" placeholder="Password" type="password" class="form-control text-center" name="password" required>
 
                                 @if ($errors->has('password'))
@@ -62,14 +65,16 @@
                             </div>
                         </div>
                         <div class="text-center">
-                                Belum memiliki akun?
+                        <b>Belum memiliki akun?
                                 <a href="{{ route('register') }}">
                                     Daftar
                                 </a>
+                        </b>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection

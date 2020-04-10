@@ -66,7 +66,7 @@ class BillController extends Controller
 
         return response()->json([
             'success'    => true,
-            'message'    => 'Penyewa Ditambah'
+            'message'    => 'Tagihan Ditambah'
         ]);
 
     }
@@ -126,7 +126,7 @@ class BillController extends Controller
 
         return response()->json([
             'success'    => true,
-            'message'    => 'Penyewa Diubah'
+            'message'    => 'Tagihan Diubah'
         ]);
     }
 
@@ -149,7 +149,7 @@ class BillController extends Controller
 
         return response()->json([
             'success'    => true,
-            'message'    => 'Penyewa Dihapus'
+            'message'    => 'Tagihan Dihapus'
         ]);
     }
 

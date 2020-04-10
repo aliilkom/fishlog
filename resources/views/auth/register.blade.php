@@ -1,16 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container panel-body ">
     <div class="row">
-        <div class="col-md-12"><br></br>
-            <div class="panel panel-default">
-            
-            <div class="panel-heading text-center"><img src="/img/logo.png"></div>
+        <div class="col-md-4"><br></br>
+        &nbsp &nbsp &nbsp &nbsp &nbsp
+        <div class="verticalhorizontal"><img src="/img/logo.png"></div>
              &nbsp
-            
+        </div> 
+        <div class="col-md-8">
+        &nbsp&nbsp&nbsp
                 <div class="container panel-body ">
-                
-                
+                <b class=text-center>
+                <div>Transformasi Digital Gudang Cold Storage.</div>&nbsp
+                <div>Daftarkan Gudang anda di ekosistem</div>
+                <div>Gudang FishLog !</div>
+                </b>
+                &nbsp
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
@@ -43,7 +49,7 @@
                         <div class="form-group{{ $errors->has('hp') ? ' has-error' : '' }}">
 
                             <div class="col-md-6 mx-auto">
-                                <input id="hp" placeholder="Nomor HP" type="hp" class="form-control text-center" name="hp" value="{{ old('hp') }}">
+                                <input id="hp" placeholder="Telepon" type="hp" class="form-control text-center" name="hp" value="{{ old('hp') }}">
 
                                 @if ($errors->has('hp'))
                                     <span class="help-block">
@@ -98,17 +104,29 @@
                                 
                             </div>
                         </div>
-                        
+                        <b>
                             <div class="text-center">
                                 Sudah memiliki akun?
                                 <a href="{{ route('login') }}">
                                     Masuk
                                 </a>
                             </div>
-                            
+                        </b>
                     </form>
+                </div>
                 </div>
             </div>
         </div>
     </div>
+    </div>
+<style>
+.verticalhorizontal {
+    display: table-cell;
+    height: 400px;
+    text-align: right;
+    width: 500px;
+    vertical-align: middle;
+}
+
+</style>
 @endsection

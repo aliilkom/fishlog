@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/apiWarehouses','WarehouseController@apiWarehouses')->name('api.warehouses');
 
     Route::resource('barang','ProductController');
+    Route::get('/barang/detail/{id}','ProductController@show');
     Route::get('/apiProducts','ProductController@apiProducts')->name('api.products');
 
     Route::resource('pindah','MoveController');
@@ -63,6 +64,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/exportProductMasuk/{id}','ProductMasukController@exportProductMasuk')->name('exportPDF.productMasuk');
    
     Route::resource('penyuplai','SupplierController');
+    Route::get('/penyuplai/detail/{id}','SupplierController@show');
     Route::get('/apiSuppliers','SupplierController@apiSuppliers')->name('api.suppliers');
     Route::post('/importSuppliers','SupplierController@ImportExcel')->name('import.suppliers');
     Route::get('/exportSupplierssAll','SupplierController@exportSuppliersAll')->name('exportPDF.suppliersAll');
@@ -75,6 +77,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/exportProductKeluar/{id}','ProductKeluarController@exportProductKeluar')->name('exportPDF.productKeluar');
 
     Route::resource('pembeli','CustomerController');
+    Route::get('/pembeli/detail/{id}','CustomerController@show');
     Route::get('/apiCustomers','CustomerController@apiCustomers')->name('api.customers');
     Route::post('/importCustomers','CustomerController@ImportExcel')->name('import.customers');
     Route::get('/exportCustomersAll','CustomerController@exportCustomersAll')->name('exportPDF.customersAll');
@@ -85,6 +88,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/apiRentals','RentalController@apiRentals')->name('api.rentals');
 
     Route::resource('rentalbarang','RentalProductController');
+    Route::get('/rentalbarang/detail/{id}','RentalProductController@show');
     Route::get('/apiRentalProducts','RentalProductController@apiRentalProducts')->name('api.rentalproducts');
 
     Route::resource('rentalkategori','RentalCategoryController');
@@ -94,6 +98,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/apiRentalMerks','RentalMerkController@apiRentalMerks')->name('api.rentalmerks');
 
     Route::resource('penyewa','RenterController');
+    Route::get('/penyewa/detail/{id}','RenterController@show');
     Route::get('/apiRenters','RenterController@apiRenters')->name('api.renters');
     Route::post('/importRenters','RenterController@ImportExcel')->name('import.renters');
     Route::get('/exportRentersAll','RenterController@exportRentersAll')->name('exportPDF.rentersAll');

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 
 use App\Renter;
+use App\Stockrentin;
+use App\Stockrentout;
 use App\Exports\ExportRenters;
 use App\Imports\RentersImport;
 use Illuminate\Http\Request;
@@ -50,7 +52,6 @@ class RenterController extends Controller
         $this->validate($request, [
             'nama'      => 'required',
             'alamat'    => 'required',
-            'email'     => 'required|unique:Renters',
             'telepon'   => 'required',
         ]);
 
@@ -79,7 +80,18 @@ class RenterController extends Controller
      */
     public function show($id)
     {
-        //
+      
+        $renter = Renter::find($id);
+        $productin = Stockrentin::where('renter_id', $id)->get();
+        $productout = Stockrentout::where('renter_id', $id)->get();
+        
+        $transaksi = Stockrentin::where('renter_id', $id)
+        ->union($productout = Stockrentout::where('renter_id', $id))
+        ->orderBy('tanggal','DSC')
+        ->get();
+            
+
+        return view('rental.renters.detail', compact('renter','productout', 'productin', 'transaksi'));
     }
 
     /**
@@ -106,7 +118,6 @@ class RenterController extends Controller
         $this->validate($request, [
             'nama'      => 'required|string',
             'alamat'    => 'required',
-            'email'     => 'required',
             'telepon'   => 'required',
         ]);
         $input = $request->all();
@@ -168,7 +179,7 @@ class RenterController extends Controller
             ->addColumn('action', function($Renter){
                 return 
                 
-                    // '<a href="#" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Show</a> ' .
+                    '<a href="/penyewa/detail/'.$Renter->id.'" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Detail</a> ' .
                     '<a onclick="editForm('. $Renter->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Ubah</a> ' .
                     '<a onclick="deleteData('. $Renter->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
             })
