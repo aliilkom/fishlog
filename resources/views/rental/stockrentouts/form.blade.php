@@ -28,7 +28,7 @@
                             <label >Penyewa</label>
                             {!! Form::select('renter_id', $renters, null, [ 'required','class' => 'form-control select', 'placeholder' => '-- Pilih Penyewa --', 'id' => 'renter_id']) !!}
                             <span class="help-block with-errors"></span>
-                            <div>Belum ada Barang?
+                            <div>Belum ada Penyewa?
                             <a href="penyewa"> Tambah</a></div>
                         </div>
 
