@@ -19,14 +19,16 @@
                         <div class="form-group">
                             <label >Nama Barang</label>
                             {!! Form::select('product_id', $products, null, [ 'required','class' => 'form-control select', 'placeholder' => '-- Pilih Barang --', 'id' => 'product_id']) !!}
+                        
                             <span class="help-block with-errors"></span>
                             <div>Belum ada Barang?
                             <a href="barang">Tambah</a></div>
                         </div>
-
+               
                         <div class="form-group">
                             <label >Penyuplai</label>
                             {!! Form::select('supplier_id', $suppliers, null, [ 'required','class' => 'form-control select', 'placeholder' => '-- Pilih Penyuplai --', 'id' => 'supplier_id']) !!}
+                           
                             <span class="help-block with-errors"></span>
                             <div>Belum ada Penyuplai?
                             <a href="penyuplai"> Tambah</a></div>
@@ -52,7 +54,7 @@
 
                         <div class="form-group">
                             <label >Tanggal Masuk</label>
-                            <input data-date-format='yyyy-mm-dd' type="text" class="form-control" id="tanggal" name="tanggal"   required>
+                            <input data-date-format='yyyy-mm-dd' type="text" class="form-control" id="tanggal" name="tanggal"  autocomplete="off" required>
                             <span class="help-block with-errors"></span>
                         </div>
 

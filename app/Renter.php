@@ -14,4 +14,5 @@ class Renter extends Model
     {
         return $this->belongsTo('App\User');
     }
+    
 }

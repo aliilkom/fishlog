@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-
+use DB;
 use App\Renter;
+use App\Product;
+use App\Warehouse;
+use App\Stockrentin;
+use App\Stockrentout;
 use App\Exports\ExportRenters;
 use App\Imports\RentersImport;
 use Illuminate\Http\Request;
@@ -25,8 +29,25 @@ class BillController extends Controller
      */
     public function index()
     {
-        $Renters = Renter::all();
-        return view('rental.bills.index');
+        $first = DB::table('stockrentins')
+        
+            ->select('products.*','products.nama as product_nama','renters.nama as renter_nama')
+            ->join('products', 'stockrentins.product_id', '=', 'products.id')
+            ->join('renters', 'stockrentins.renter_id', '=', 'renters.id')
+            ->get();
+            
+        $firsts = DB::table('products')
+            ->select('products.id as id','products.nama as product_nama','warehouses.nama as warehouse_nama')
+            ->join('warehouses', 'products.warehouse_id', '=', 'warehouses.id')
+            ->selectRaw("CONCAT (products.nama, ' dari ', warehouses.nama) as joins")
+            ->get()
+            ->pluck('joins','id');
+
+        $firstss = Product::orderBy('nama','ASC')
+            ->where('manajemen', 'gudang')
+            ->get()
+            ->pluck('nama','id');
+        return compact('firsts');
     }
 
     /**

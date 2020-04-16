@@ -91,6 +91,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/rentalbarang/detail/{id}','RentalProductController@show');
     Route::get('/apiRentalProducts','RentalProductController@apiRentalProducts')->name('api.rentalproducts');
 
+    Route::resource('rentalpindah','RentalMoveController');
+    Route::get('/apiRentalMoves','RentalMoveController@apiRentalMoves')->name('api.rentalmoves');
+
     Route::resource('rentalkategori','RentalCategoryController');
     Route::get('/apiRentalCategories','RentalCategoryController@apiRentalCategories')->name('api.rentalcategories');
     

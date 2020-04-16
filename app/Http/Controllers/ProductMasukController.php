@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-
+use DB;
 use App\Exports\ExportProdukMasuk;
+use App\Warehouse;
 use App\Product;
 use App\Product_Masuk;
 use App\Supplier;
@@ -30,14 +31,16 @@ class ProductMasukController extends Controller
         $products = Product::orderBy('nama','ASC')
             ->where('user_id', $id)
             ->where('manajemen', 'gudang')
+            // ->selectRaw("CONCAT (nama, ' ', warehouse_id) as columns, id")
             ->get()
-            ->pluck('nama','id');
-
+            ->pluck('nama', 'id');
+        
         $suppliers = Supplier::orderBy('nama','ASC')
             ->where('user_id', $id)
             ->get()
             ->pluck('nama','id');
-
+        
+       
         $invoice_data = Product_Masuk::all()->where('user_id', $id);
         return view('gudang.product_masuk.index', compact('products','suppliers','invoice_data'));
     }

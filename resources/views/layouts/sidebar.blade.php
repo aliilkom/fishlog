@@ -56,12 +56,14 @@
                         <li class=""><a href="{{ url('berandarental') }}"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
                         <!-- <li class=""><a href="{{ route('rentalgudang.index') }}"><i class="fa fa-university"></i> <span>Gudang</span></a></li> -->
                         <li class=""><a href="{{ route('rentalbarang.index') }}"><i class="fa fa-database"></i> <span>Barang</span></a></li>
+                        <li class=""><a href="{{ route('rentalpindah.index') }}"><i class="fa fa-exchange"></i> <span>Pindah Barang</span></a></li>
                         <li class=""><a href="{{ route('rentalkategori.index') }}"><i class="fa fa-tags"></i> <span>Kategori Barang</span></a></li>
                         <li class=""><a href="{{ route('rentalmerek.index') }}"><i class="fa fa-flag"></i> <span>Merek Barang</span></a></li>
                         <li class=""><a href="{{ route('rentalstokmasuk.index') }}"><i class="fa fa-download"></i> <span>Stok Masuk</span></a></li>
                         <li class=""><a href="{{ route('rentalstokkeluar.index') }}"><i class="fa fa-upload"></i> <span>Stok Keluar</span></a></li>
                         <li class=""><a href="{{ route('penyewa.index') }}"><i class="fa fa-street-view"></i> <span>Penyewa</span></a></li>
                         <li class=""><a href="{{ route('tagihan.index') }}"><i class="fa fa-money"></i> <span>Tagihan</span></a></li>
+                        
                     </ul>
             </li>
             

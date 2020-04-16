@@ -80,7 +80,6 @@
                     <th>Cetak Struk</th>
                 </tr>
                 </thead>
-
                 @foreach($invoice_data as $i)
                     <tbody>
                         <!-- <td>{{ $i->id }}</td> -->

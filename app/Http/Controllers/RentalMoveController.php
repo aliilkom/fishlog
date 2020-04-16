@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth;
 
-class MoveController extends Controller
+class RentalMoveController extends Controller
 {
     public function __construct()
     {
@@ -28,25 +28,25 @@ class MoveController extends Controller
         $id = Auth::id();
         $product1 = DB::table('products')
             ->where('products.user_id', $id)
-            ->where('products.manajemen', 'gudang')
+            ->where('products.manajemen', 'rental')
             ->join('warehouses', 'products.warehouse_id', '=', 'warehouses.id')
             ->select('products.*','warehouses.nama')
-            ->selectRaw("CONCAT (products.nama, ' stok : ', products.jumlah, ' dari ', warehouses.nama) as joins")
+            ->selectRaw("CONCAT (products.nama, ' stok = ', products.jumlah, ' dari ', warehouses.nama) as joins")
             ->orderBy('joins','ASC')
             ->get()
             ->pluck('joins','id');
 
         $product2 = DB::table('products')
             ->where('products.user_id', $id)
-            ->where('products.manajemen', 'gudang')
+            ->where('products.manajemen', 'rental')
             ->join('warehouses', 'products.warehouse_id', '=', 'warehouses.id')
             ->select('products.*','warehouses.nama')
-            ->selectRaw("CONCAT (products.nama, ' stok : ', products.jumlah, ' dari ', warehouses.nama) as joins")
+            ->selectRaw("CONCAT (products.nama, ' stok = ', products.jumlah, ' dari ', warehouses.nama) as joins")
             ->orderBy('joins','ASC')
             ->get()
             ->pluck('joins','id');
 
-        return view('gudang.moves.index', compact('product1','product2'));
+        return view('rental.moves.index', compact('product1','product2'));
     }
     
     /**
@@ -142,6 +142,7 @@ class MoveController extends Controller
         // $product2->jumlah += $request->jumlah;
         // $product2->update();
 
+
         return response()->json([
             'success'    => true,
             'message'    => 'Pindah Barang Diubah'
@@ -166,11 +167,11 @@ class MoveController extends Controller
 
 
 
-    public function apiMoves(){
+    public function apiRentalMoves(){
         $id = Auth::id();
         $move = Move::orderBy('tanggal','DSC')
             ->where('user_id', $id)
-            ->where('manajemen', 'gudang');
+            ->where('manajemen', 'rental');
 
         return Datatables::of($move)
             ->addColumn('products1_name', function ($move){

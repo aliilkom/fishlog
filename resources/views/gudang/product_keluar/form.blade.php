@@ -52,7 +52,7 @@
 
                         <div class="form-group">
                             <label >Tanggal Keluar</label>
-                            <input data-date-format='yyyy-mm-dd' type="text" class="form-control" id="tanggal" name="tanggal"   required>
+                            <input data-date-format='yyyy-mm-dd' type="text" class="form-control" id="tanggal" name="tanggal"  autocomplete="off" required>
                             <span class="help-block with-errors"></span>
                         </div>
 

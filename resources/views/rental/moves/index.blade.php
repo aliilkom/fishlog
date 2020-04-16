@@ -2,13 +2,13 @@
 
 @section('dashboard')
    Pindah Barang
-   <small>Manajemen Gudang</small>
+   <small>Manajemen Rental</small>
 @endsection
 
 @section('breadcrumb')
-    <li><a href="{{ url('berandagudang') }}"><i class="fa fa-dashboard"></i>Manajemen Gudang</a></li>
+    <li><a href="{{ url('berandarental') }}"><i class="fa fa-dashboard"></i>Manajemen Rental</a></li>
     
-    <li class="active"><a href="{{ url('pindah') }}"><i class="fa fa-exchange"></i>Pindah Barang</a></li>
+    <li class="active"><a href="{{ url('rentalpindah') }}"><i class="fa fa-exchange"></i>Pindah Barang</a></li>
 @endsection
 
 @section('top')
@@ -26,7 +26,7 @@
 
         <!-- /.box-header -->
         <div class="box-body">
-            <table id="moves-table" class="table table-striped">
+            <table id="rentalmoves-table" class="table table-striped">
                 <thead>
                 <tr>
                     <!-- <th>No</th> -->
@@ -43,7 +43,7 @@
         <!-- /.box-body -->
     </div>
 
-    @include('gudang.moves.form')
+    @include('rental.moves.form')
 
 @endsection
 
@@ -108,10 +108,10 @@
     </script>
     
     <script type="text/javascript">
-        var table = $('#moves-table').DataTable({
+        var table = $('#rentalmoves-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('api.moves') }}",
+            ajax: "{{ route('api.rentalmoves') }}",
             columns: [
                 // {data: 'id', name: 'id'},
                 {data: 'products1_name', name: 'products1_name'},
@@ -136,7 +136,7 @@
             $('input[name=_method]').val('PATCH');
             $('#modal-form form')[0].reset();
             $.ajax({
-                url: "{{ url('pindah') }}" + '/' + id + "/edit",
+                url: "{{ url('rentalpindah') }}" + '/' + id + "/edit",
                 type: "GET",
                 dataType: "JSON",
                 success: function(data) {
@@ -167,7 +167,7 @@
                 confirmButtonText: 'Hapus'
             }).then(function () {
                 $.ajax({
-                    url : "{{ url('pindah') }}" + '/' + id,
+                    url : "{{ url('rentalpindah') }}" + '/' + id,
                     type : "POST",
                     data : {'_method' : 'DELETE', '_token' : csrf_token},
                     success : function(data) {
@@ -195,8 +195,8 @@
             $('#modal-form form').validator().on('submit', function (e) {
                 if (!e.isDefaultPrevented()){
                     var id = $('#id').val();
-                    if (save_method == 'add') url = "{{ url('pindah') }}";
-                    else url = "{{ url('pindah') . '/' }}" + id;
+                    if (save_method == 'add') url = "{{ url('rentalpindah') }}";
+                    else url = "{{ url('rentalpindah') . '/' }}" + id;
 
                     $.ajax({
                         url : url,

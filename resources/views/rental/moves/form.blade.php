@@ -52,7 +52,7 @@
                     <!-- /.box-body -->
                     <div class="form-group">
                             <!-- <label >Manajemen</label> -->
-                            <input type="hidden" class="form-control" id="manajemen" name="manajemen" value="gudang" readonly>
+                            <input type="hidden" class="form-control" id="manajemen" name="manajemen" value="rental" readonly>
                             <span class="help-block with-errors"></span>
                         </div>
 
