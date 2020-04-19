@@ -29,25 +29,32 @@ class BillController extends Controller
      */
     public function index()
     {
-        $first = DB::table('stockrentins')
-        
-            ->select('products.*','products.nama as product_nama','renters.nama as renter_nama')
-            ->join('products', 'stockrentins.product_id', '=', 'products.id')
-            ->join('renters', 'stockrentins.renter_id', '=', 'renters.id')
-            ->get();
-            
-        $firsts = DB::table('products')
-            ->select('products.id as id','products.nama as product_nama','warehouses.nama as warehouse_nama')
-            ->join('warehouses', 'products.warehouse_id', '=', 'warehouses.id')
-            ->selectRaw("CONCAT (products.nama, ' dari ', warehouses.nama) as joins")
-            ->get()
-            ->pluck('joins','id');
 
-        $firstss = Product::orderBy('nama','ASC')
-            ->where('manajemen', 'gudang')
-            ->get()
-            ->pluck('nama','id');
-        return compact('firsts');
+            $first = DB::table('stockrentins');
+
+            $transaksi = DB::table('stockrentouts')
+            ->union($first);
+
+            $join1 = DB::table('products')
+            
+                ->joinSub($transaksi, 'tr', function ($join) {
+                    $join->on('products.id', '=', 'tr.product_id');
+                })
+                ->select('products.nama as barang', 'products.jumlah as stok', 'products.satuan', 
+                'products.tagihan', 'products.bysewa', 'products.bybongkar', 'products.bymuat', 
+                'tr.jumlah as tr_jml', 'tr.tanggal as tr_tgl', 'tr.keterangan as tr_ket', 'tr.renter_id');
+
+            $join2 = DB::table('renters')
+            
+                ->joinSub($join1, 'j1', function ($join) {
+                    $join->on('renters.id', '=', 'j1.renter_id');
+                })
+                ->select('renters.id', 'renters.user_id', 'renters.nama', 'j1.*')
+                ->get();
+
+            
+
+        return view('rental.bills.index', compact('join2'));
     }
 
     /**
@@ -68,27 +75,7 @@ class BillController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'nama'      => 'required',
-            'alamat'    => 'required',
-            'email'     => 'required|unique:Renters',
-            'telepon'   => 'required',
-        ]);
-
-        $input = $request->all();
-        $input['image'] = null;
-
-        if ($request->hasFile('image')){
-            $input['image'] = '/upload/penyewa/'.str_slug($input['nama'], '-').'.'.$request->image->getClientOriginalExtension();
-            $request->image->move(public_path('/upload/penyewa/'), $input['image']);
-        }
-
-        Renter::create($input);
-
-        return response()->json([
-            'success'    => true,
-            'message'    => 'Tagihan Ditambah'
-        ]);
+       
 
     }
 
@@ -111,8 +98,7 @@ class BillController extends Controller
      */
     public function edit($id)
     {
-        $Renter = Renter::find($id);
-        return $Renter;
+       
     }
 
     /**
@@ -124,31 +110,7 @@ class BillController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'nama'      => 'required|string',
-            'alamat'    => 'required',
-            'email'     => 'required',
-            'telepon'   => 'required',
-        ]);
-        $input = $request->all();
-        $Renter = Renter::findOrFail($id);
-
-        $input['image'] = $Renter->image;
-
-        if ($request->hasFile('image')){
-            if (!$Renter->image == NULL){
-                unlink(public_path($Renter->image));
-            }
-            $input['image'] = '/upload/penyewa/'.str_slug($input['nama'], '-').'.'.$request->image->getClientOriginalExtension();
-            $request->image->move(public_path('/upload/penyewa/'), $input['image']);
-        }
-
-        $Renter->update($input);
-
-        return response()->json([
-            'success'    => true,
-            'message'    => 'Tagihan Diubah'
-        ]);
+        
     }
 
     /**
@@ -159,41 +121,12 @@ class BillController extends Controller
      */
     public function destroy($id)
     {
-        $Renter = Renter::findOrFail($id);
-
-        if (!$Renter->image == NULL){
-            unlink(public_path($Renter->image));
-        }
-
-        Renter::destroy($id);
-
-
-        return response()->json([
-            'success'    => true,
-            'message'    => 'Tagihan Dihapus'
-        ]);
+           
     }
 
     public function apiRenters()
     {
-        $id = Auth::id();
-        $Renter = Renter::all()->where('user_id', $id);
-
-        return Datatables::of($Renter)
-            ->addColumn('show_photo', function($Renter){
-                if ($Renter->image == NULL){
-                    return 'No Image';
-                }
-                return '<img class="rounded-square" width="50" height="50" src="'. url($Renter->image) .'" alt="">';
-            })
-            ->addColumn('action', function($Renter){
-                return 
-                
-                    // '<a href="#" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Show</a> ' .
-                    '<a onclick="editForm('. $Renter->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Ubah</a> ' .
-                    '<a onclick="deleteData('. $Renter->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
-            })
-            ->rawColumns(['show_photo','action'])->make(true);
+        
     }
 
     public function ImportExcel(Request $request)
