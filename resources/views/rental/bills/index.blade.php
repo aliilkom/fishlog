@@ -14,8 +14,7 @@
 @section('top')
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
-    {{--<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">--}}
-    @include('sweet::alert')
+    
 @endsection
 
 @section('content')
@@ -29,27 +28,20 @@
 
         <!-- /.box-header -->
         <div class="box-body">
-            <table id="bill" class="table table-bordered">
+            <table id="bills-table" class="table table-bordered">
                 <thead>
                 <tr>
                 <!-- <th>No</th> -->
-                    <th>Penyuplai</th>
+                    <th>Penyewa</th>
                     <th>Nama Barang</th>
                     <th>Stok Barang</th>
-                    <th>Tagihan</th>
+                    <th>Update Stok</th>
+                    <th>Tagihan Sewa</th>
                     <th>Keterangan</th>
                     <!-- <th>Cetak Tagihan</th> -->
                 </tr>
                 </thead>
-                @foreach($join2 as $j)
-                    <tbody>
-                        <td>{{ $j->nama }}</td>
-                        <td>{{ $j->barang }}</td>
-                        <td>{{ $j->stok }}</td>
-                        <td>{{ $j->tagihan }}</td>
-                        <td>{{ $j->tr_ket }}</td>
-                    </tbody>
-                @endforeach
+                <tbody></tbody>
             </table>
         </div>
         <!-- /.box-body -->
@@ -62,5 +54,25 @@
 @endsection
 
 @section('bot')
+ <!-- DataTables -->
+    <script src=" {{ asset('assets/bower_components/datatables.net/js/jquery.dataTables.min.js') }} "></script>
+    <script src="{{ asset('assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }} "></script>
 
+    <script type="text/javascript">
+        var table = $('#bills-table').DataTable({
+            autoWidth   : false,
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('api.bills') }}",
+            columns: [
+                {data: 'nama', name: 'nama'},
+                {data: 'barang', name: 'barang'},
+                {data: 'stok', name: 'stok'},
+                {data: 'tr_jml', name: 'tr_jml'},
+                {data: 'totalTagihan', name: 'totalTagihan'},
+                {data: 'tr_ket', name: 'tr_ket'},
+
+            ]
+        });
+    </script>
 @endsection

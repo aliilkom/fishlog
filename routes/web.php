@@ -44,6 +44,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/gudang/detail/{id}','WarehouseController@show');
     Route::get('/apiWarehouses','WarehouseController@apiWarehouses')->name('api.warehouses');
 
+    Route::resource('stok','StockController');
+    Route::get('/apiStocks','StockController@apiStocks')->name('api.stocks');
+
     Route::resource('barang','ProductController');
     Route::get('/barang/detail/{id}','ProductController@show');
     Route::get('/apiProducts','ProductController@apiProducts')->name('api.products');
@@ -84,8 +87,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/exportCustomersAllExcel','CustomerController@exportExcel')->name('exportExcel.customersAll');
 
     //----------------------------Rental Gudang-------------------------------\\
-    Route::resource('rentalgudang','RentalController');
-    Route::get('/apiRentals','RentalController@apiRentals')->name('api.rentals');
+    Route::resource('rentalstok','RentalStockController');
+    Route::get('/apiRentalStocks','RentalStockController@apiRentalStocks')->name('api.rentalstocks');
 
     Route::resource('rentalbarang','RentalProductController');
     Route::get('/rentalbarang/detail/{id}','RentalProductController@show');

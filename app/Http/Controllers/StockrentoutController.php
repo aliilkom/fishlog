@@ -158,9 +158,6 @@ class StockrentoutController extends Controller
             ->addColumn('products_name', function ($product){
                 return $product->product->nama;
             })
-            ->addColumn('stok', function ($product){
-                return $product->product->jumlah;
-            })
             ->addColumn('renter_name', function ($product){
                 return $product->renter->nama;
             })
@@ -170,7 +167,7 @@ class StockrentoutController extends Controller
                     '<a onclick="editForm('. $product->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Ubah</a> ' .
                     '<a onclick="deleteData('. $product->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Hapus</a>';
             })
-            ->rawColumns(['products_name', 'stok','renter_name','action'])->make(true);
+            ->rawColumns(['products_name','renter_name','action'])->make(true);
 
     }
 

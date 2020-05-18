@@ -35,23 +35,24 @@
                 <i class="glyphicon glyphicon-inbox"></i> <span>Manajemen Gudang</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i> </span> 
             </a>
             <ul class="treeview-menu">
-                <li class=""><a href="{{ url('berandagudang') }}"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
-                <li class=""><a href="{{ route('stokmasuk.index') }}"><i class="fa fa-sign-in"></i> <span>Stok Masuk</span></a></li>
-                <li class=""><a href="{{ route('stokkeluar.index') }}"><i class="fa fa-sign-out"></i> <span>Stok Keluar</span></a></li>
-                <li class="treeview">
+                <li class="{{ (request()->is('berandagudang')) ? 'active' : '' }}"><a href="{{ url('berandagudang') }}"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
+                <li class="{{ (request()->is('stok')) ? 'active' : '' }}"><a href="{{ route('stok.index') }}"><i class="fa fa-database"></i> <span>Stok Barang</span></a></li>
+                <li class="{{ (request()->is('stokmasuk')) ? 'active' : '' }}"><a href="{{ route('stokmasuk.index') }}"><i class="fa fa-sign-in"></i> <span>Stok Masuk</span></a></li>
+                <li class="{{ (request()->is('stokkeluar')) ? 'active' : '' }}"><a href="{{ route('stokkeluar.index') }}"><i class="fa fa-sign-out"></i> <span>Stok Keluar</span></a></li>
+                <li class="treeview {{ (request()->is('gudang','barang','pindah','kategori','merek','penyuplai','pembeli')) ? 'menu-open' : '' }}">
                     <a href="#"><i class="fa fa-files-o"></i> Data Master
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
                     </a>
-                    <ul class="treeview-menu" style="display: none;">
-                        <li class=""><a href="{{ route('gudang.index') }}"><i class="fa fa-truck"></i> <span>Gudang</span></a></li>
-                        <li class=""><a href="{{ route('barang.index') }}"><i class="fa fa-cubes"></i> <span>Barang</span></a></li>
-                        <li class=""><a href="{{ route('pindah.index') }}"><i class="fa fa-exchange"></i> <span>Pindah Barang</span></a></li>
-                        <li class=""><a href="{{ route('kategori.index') }}"><i class="fa fa-tags"></i> <span>Kategori Barang</span></a></li>
-                        <li class=""><a href="{{ route('merek.index') }}"><i class="fa fa-flag"></i> <span>Merek Barang</span></a></li>
-                        <li class=""><a href="{{ route('penyuplai.index') }}"><i class="fa fa-user-plus"></i> <span>Penyuplai</span></a></li>
-                        <li class=""><a href="{{ route('pembeli.index') }}"><i class="fa fa-user-secret"></i> <span>Pembeli</span></a></li>
+                    <ul class="treeview-menu" style="{{ (request()->is('gudang','barang','pindah','kategori','merek','penyuplai','pembeli')) ? 'display: block;' : '' }}">
+                        <li class="{{ (request()->is('gudang')) ? 'active' : '' }}"><a href="{{ route('gudang.index') }}"><i class="fa fa-truck"></i> <span>Gudang</span></a></li>
+                        <li class="{{ (request()->is('barang')) ? 'active' : '' }}"><a href="{{ route('barang.index') }}"><i class="fa fa-cubes"></i> <span>Barang</span></a></li>
+                        <li class="{{ (request()->is('pindah')) ? 'active' : '' }}"><a href="{{ route('pindah.index') }}"><i class="fa fa-exchange"></i> <span>Pindah Barang</span></a></li>
+                        <li class="{{ (request()->is('kategori')) ? 'active' : '' }}"><a href="{{ route('kategori.index') }}"><i class="fa fa-tags"></i> <span>Kategori Barang</span></a></li>
+                        <li class="{{ (request()->is('merek')) ? 'active' : '' }}"><a href="{{ route('merek.index') }}"><i class="fa fa-flag"></i> <span>Merek Barang</span></a></li>
+                        <li class="{{ (request()->is('penyuplai')) ? 'active' : '' }}"><a href="{{ route('penyuplai.index') }}"><i class="fa fa-user-plus"></i> <span>Penyuplai</span></a></li>
+                        <li class="{{ (request()->is('pembeli')) ? 'active' : '' }}"><a href="{{ route('pembeli.index') }}"><i class="fa fa-user-secret"></i> <span>Pembeli</span></a></li>
                     </ul>
                 </li>
             </ul>
@@ -62,23 +63,24 @@
                     <i class="fa fa-dollar"></i> <span>Manajemen Rental</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i> </span> 
                 </a>
                     <ul class="treeview-menu">
-                        <li class=""><a href="{{ url('berandarental') }}"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
-                        <li class=""><a href="{{ route('rentalstokmasuk.index') }}"><i class="fa fa-download"></i> <span>Stok Masuk</span></a></li>
-                        <li class=""><a href="{{ route('rentalstokkeluar.index') }}"><i class="fa fa-upload"></i> <span>Stok Keluar</span></a></li>
+                        <li class="{{ (request()->is('berandarental')) ? 'active' : '' }}"><a href="{{ url('berandarental') }}"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
+                        <li class="{{ (request()->is('rentalstok')) ? 'active' : '' }}"><a href="{{ route('rentalstok.index') }}"><i class="fa fa-database"></i> <span>Stok Barang</span></a></li>
+                        <li class="{{ (request()->is('rentalstokmasuk')) ? 'active' : '' }}"><a href="{{ route('rentalstokmasuk.index') }}"><i class="fa fa-download"></i> <span>Stok Masuk</span></a></li>
+                        <li class="{{ (request()->is('rentalstokkeluar')) ? 'active' : '' }}"><a href="{{ route('rentalstokkeluar.index') }}"><i class="fa fa-upload"></i> <span>Stok Keluar</span></a></li>
                         
-                        <li class="treeview">
+                        <li class="treeview {{ (request()->is('rentalbarang','rentalpindah','rentalkategori','rentalmerek','penyewa','tagihan')) ? 'menu-open' : '' }}">
                             <a href="#"><i class="fa fa-files-o"></i> Data Master
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
-                            <ul class="treeview-menu" style="display: none;">
-                                <li class=""><a href="{{ route('rentalbarang.index') }}"><i class="fa fa-database"></i> <span>Barang</span></a></li>
-                                <li class=""><a href="{{ route('rentalpindah.index') }}"><i class="fa fa-exchange"></i> <span>Pindah Barang</span></a></li>
-                                <li class=""><a href="{{ route('rentalkategori.index') }}"><i class="fa fa-tags"></i> <span>Kategori Barang</span></a></li>
-                                <li class=""><a href="{{ route('rentalmerek.index') }}"><i class="fa fa-flag"></i> <span>Merek Barang</span></a></li>
-                                <li class=""><a href="{{ route('penyewa.index') }}"><i class="fa fa-street-view"></i> <span>Penyewa</span></a></li>
-                                <li class=""><a href="{{ route('tagihan.index') }}"><i class="fa fa-money"></i> <span>Tagihan</span></a></li>
+                            <ul class="treeview-menu" style="{{ (request()->is('rentalbarang','rentalpindah','rentalkategori','rentalmerek','penyewa','tagihan')) ? 'display: block;' : '' }}">
+                                <li class="{{ (request()->is('rentalbarang')) ? 'active' : '' }}"><a href="{{ route('rentalbarang.index') }}"><i class="fa fa-cubes"></i> <span>Barang</span></a></li>
+                                <li class="{{ (request()->is('rentalpindah')) ? 'active' : '' }}"><a href="{{ route('rentalpindah.index') }}"><i class="fa fa-exchange"></i> <span>Pindah Barang</span></a></li>
+                                <li class="{{ (request()->is('rentalkategori')) ? 'active' : '' }}"><a href="{{ route('rentalkategori.index') }}"><i class="fa fa-tags"></i> <span>Kategori Barang</span></a></li>
+                                <li class="{{ (request()->is('rentalmerek')) ? 'active' : '' }}"><a href="{{ route('rentalmerek.index') }}"><i class="fa fa-flag"></i> <span>Merek Barang</span></a></li>
+                                <li class="{{ (request()->is('penyewa')) ? 'active' : '' }}"><a href="{{ route('penyewa.index') }}"><i class="fa fa-street-view"></i> <span>Penyewa</span></a></li>
+                                <li class="{{ (request()->is('tagihan')) ? 'active' : '' }}"><a href="{{ route('tagihan.index') }}"><i class="fa fa-money"></i> <span>Tagihan</span></a></li>
                             </ul>
                         </li>
 

@@ -39,9 +39,8 @@
                 <tr>
                     <!-- <th>No</th> -->
                     <th>Nama Barang</th>
-                    <th>Stok Barang</th>
                     <th>Penyewa</th>
-                    <th>Jumlah</th>
+                    <th>Stok Keluar</th>
                     <th>Tanggal Keluar</th>
                     <th>Opsi</th>
                 </tr>
@@ -74,7 +73,7 @@
                 <!-- <th>No</th> -->
                     <th>Nama Barang</th>
                     <th>Penyewa</th>
-                    <th>Jumlah</th>
+                    <th>Stok Keluar</th>
                     <th>Tanggal Keluar</th>
                     <th>Cetak Struk</th>
                 </tr>
@@ -163,13 +162,13 @@
 
     <script type="text/javascript">
         var table = $('#stockrentout-table').DataTable({
+            autoWidth   : false,
             processing: true,
             serverSide: true,
             ajax: "{{ route('api.stockrentouts') }}",
             columns: [
                 // {data: 'id', name: 'id'},
                 {data: 'products_name', name: 'products_name'},
-                {data: 'stok', name: 'stok'},
                 {data: 'renter_name', name: 'renter_name'},
                 {data: 'jumlah', name: 'jumlah'},
                 {data: 'tanggal', name: 'tanggal'},

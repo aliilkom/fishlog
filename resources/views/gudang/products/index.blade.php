@@ -76,6 +76,7 @@
 
     <script type="text/javascript">
         var table = $('#products-table').DataTable({
+            autoWidth   : false,
             processing: true,
             serverSide: true,
             ajax: "{{ route('api.products') }}",

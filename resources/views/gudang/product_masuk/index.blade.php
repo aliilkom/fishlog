@@ -38,7 +38,6 @@
                 <tr>
                     <!-- <th>No</th> -->
                     <th>Nama Barang</th>
-                    <th>Stok Barang</th>
                     <th>Penyuplai</th>
                     <th>Stok Masuk</th>
                     <th>Pembayaran</th>
@@ -164,13 +163,13 @@
 
     <script type="text/javascript">
         var table = $('#products-in-table').DataTable({
+            autoWidth   : false,
             processing: true,
             serverSide: true,
             ajax: "{{ route('api.productsIn') }}",
             columns: [
                 // {data: 'id', name: 'id'},
                 {data: 'products_name', name: 'products_name'},
-                {data: 'stok', name: 'stok'},
                 {data: 'supplier_name', name: 'supplier_name'},
                 {data: 'jumlah', name: 'jumlah'},
                 {data: 'pembayaran', name: 'pembayaran'},
@@ -235,6 +234,7 @@
                             type: 'success',
                             timer: '1500'
                         })
+                        location.reload();
                     },
                     error : function () {
                         swal({
@@ -266,12 +266,14 @@
                         success : function(data) {
                             $('#modal-form').modal('hide');
                             table.ajax.reload();
+                            
                             swal({
                                 title: 'Success!',
                                 text: data.message,
                                 type: 'success',
                                 timer: '1500'
                             })
+                            location.reload();
                         },
                         error : function(data){
                             swal({
@@ -286,6 +288,7 @@
                 }
             });
         });
+        
     </script>
 
 @endsection

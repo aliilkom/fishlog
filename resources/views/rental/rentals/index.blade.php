@@ -74,6 +74,7 @@
 
     <script type="text/javascript">
         var table = $('#warehouses-table').DataTable({
+            autoWidth   : false,
             processing: true,
             serverSide: true,
             ajax: "{{ route('api.rentals') }}",

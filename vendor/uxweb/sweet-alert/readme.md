@@ -40,7 +40,7 @@ This package works only by using the [BEAUTIFUL REPLACEMENT FOR JAVASCRIPT'S "AL
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </head>
   <body>
-    @include('sweet::alert')
+    
   </body>
 </html>
 ```
@@ -79,7 +79,7 @@ Then make sure to include your scripts in your blade layout. Remove the `defer` 
     <script src="{{ asset('js/app.js') }}"></script>
   </head>
   <body>
-    @include('sweet::alert')
+    
   </body>
 </html>
 ```

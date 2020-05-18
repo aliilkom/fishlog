@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Validator;
 use Hash;
+use Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -83,12 +84,8 @@ class SettingsController extends Controller
 
         $user->save();
 
-        Session::flash("flash_notification", [
-            "level" => "success",
-            "icon" => "fa fa-check",
-            "message" => "Profile berhasil diubah"
-        ]);
-
+        Session::flash("profile-success", "Profil berhasil diubah");
+        
         return redirect('settings/profile');
     }
 
@@ -116,13 +113,9 @@ class SettingsController extends Controller
         $user->password = bcrypt($request->get('new_password'));
         $user->save();
 
-        Session::flash("flash_notification", [
-            "level" => "success",
-            "icon" => "fa fa-check",
-            "message" => "Password berhasil dirubah"
-        ]);
-
-        return redirect('settings/password');
+        Session::flash("password-success", "Password berhasil diubah");
+        
+        return redirect('settings/profile');
     }
 
 }

@@ -76,7 +76,7 @@ class ProductMasukController extends Controller
         $product = Product::findOrFail($request->product_id);
         $product->jumlah += $request->jumlah;
         $product->save();
-
+            
         return response()->json([
             'success'    => true,
             'message'    => 'Stok Masuk Ditambah'
@@ -163,9 +163,6 @@ class ProductMasukController extends Controller
             ->addColumn('products_name', function ($product){
                 return $product->product->nama;
             })
-            ->addColumn('stok', function ($product){
-                return $product->product->jumlah;
-            })
             ->addColumn('supplier_name', function ($product){
                 return $product->supplier->nama;
             })
@@ -177,7 +174,7 @@ class ProductMasukController extends Controller
 
 
             })
-            ->rawColumns(['products_name', 'stok', 'supplier_name','action'])->make(true);
+            ->rawColumns(['products_name', 'supplier_name','action'])->make(true);
 
     }
 

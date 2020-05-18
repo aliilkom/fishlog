@@ -10,6 +10,18 @@
 @endsection
 
 @section('content')
+@if ($message = Session::get('profile-success'))
+      <div class="alert alert-success alert-block">
+        <button type="button" class="close" data-dismiss="alert">×</button> 
+          <strong>{{ $message }}</strong>
+      </div>
+@endif
+@if ($message = Session::get('password-success'))
+      <div class="alert alert-success alert-block">
+        <button type="button" class="close" data-dismiss="alert">×</button> 
+          <strong>{{ $message }}</strong>
+      </div>
+@endif
 
     <div class="row">
         <div class="col-md-3">

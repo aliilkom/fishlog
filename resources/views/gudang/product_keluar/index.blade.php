@@ -22,6 +22,7 @@
 @endsection
 
 @section('content')
+ 
     <div class="box">
 
         
@@ -39,7 +40,6 @@
                 <tr>
                     <!-- <th>No</th> -->
                     <th>Nama Barang</th>
-                    <th>Stok Barang</th>
                     <th>Pembeli</th>
                     <th>Stok Keluar</th>
                     <th>Pembayaran</th>
@@ -166,13 +166,13 @@
 
     <script type="text/javascript">
         var table = $('#products-out-table').DataTable({
+            autoWidth   : false,
             processing: true,
             serverSide: true,
             ajax: "{{ route('api.productsOut') }}",
             columns: [
                 // {data: 'id', name: 'id'},
                 {data: 'products_name', name: 'products_name'},
-                {data: 'stok', name: 'stok'},
                 {data: 'customer_name', name: 'customer_name'},
                 {data: 'jumlah', name: 'jumlah'},
                 {data: 'pembayaran', name: 'pembayaran'},
@@ -237,6 +237,7 @@
                             type: 'success',
                             timer: '1500'
                         })
+                        location.reload();
                     },
                     error : function () {
                         swal({
@@ -274,6 +275,7 @@
                                 type: 'success',
                                 timer: '1500'
                             })
+                            location.reload();
                         },
                         error : function(data){
                             swal({

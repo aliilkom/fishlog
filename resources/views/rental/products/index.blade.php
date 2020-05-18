@@ -8,7 +8,7 @@
 @section('breadcrumb')
     <li><a href="{{ url('berandarental') }}"><i class="fa fa-dashboard"></i>Manajemen Rental</a></li>
     
-    <li class="active"><a href="{{ url('rentalbarang') }}"><i class="fa fa-database"></i>Barang</a></li>
+    <li class="active"><a href="{{ url('rentalbarang') }}"><i class="fa fa-cubes"></i>Barang</a></li>
 @endsection
 
 @section('top')
@@ -33,7 +33,7 @@
                     <th>Lokasi Gudang</th>
                     <th>Nama Barang</th>
                     <th>SKU</th>
-                    <th>Jumlah</th>
+                    <th>Stok</th>
                     <th>Satuan</th>
                     <th>Kategori</th>
                     <th>Merek</th>
@@ -77,6 +77,7 @@
 
     <script type="text/javascript">
         var table = $('#products-table').DataTable({
+            autoWidth   : false,
             processing: true,
             serverSide: true,
             ajax: "{{ route('api.rentalproducts') }}",

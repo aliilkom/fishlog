@@ -71,6 +71,7 @@
 
     <script type="text/javascript">
         var table = $('#merek-table').DataTable({
+            autoWidth   : false,
             processing: true,
             serverSide: true,
             ajax: "{{ route('api.rentalmerks') }}",
