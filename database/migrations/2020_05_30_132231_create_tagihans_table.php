@@ -19,6 +19,7 @@ class CreateTagihansTable extends Migration
             $table->integer('product_id')->unsigned();
             $table->integer('renter_id')->unsigned();
             $table->integer('tagihan')->nullable();
+            $table->integer('tagihan_sebelumnya')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

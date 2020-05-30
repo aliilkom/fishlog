@@ -113,7 +113,7 @@ class BillController extends Controller
                 ->joinSub($transaksi, 'tr', function ($join) {
                     $join->on('products.id', '=', 'tr.product_id');
                 })
-                ->select('products.nama as barang', 'products.jumlah as stok', 'products.jumlah_sebelumnya as stok_sebelumnya', 'products.satuan', 
+                ->select('products.nama as barang', 'products.jumlah as stok','products.jumlah_sebelumnya as stok_sebelumnya', 'products.satuan', 
                 'products.tagihan', 'products.bysewa', 'products.bybongkar', 'products.bymuat', 
                 'tr.jumlah as tr_jml','tr.tanggal as tr_tgl', 'tr.keterangan as tr_ket', 'tr.renter_id');
 
@@ -124,11 +124,24 @@ class BillController extends Controller
                 })
                 ->select('renters.id', 'renters.user_id', 'renters.nama', 'j1.*')
                 ->get();
-                // $tes = Carbon::parse($join2[$j-1]->tr_tgl);
-                // $waktuSimpan = $tes->diffInDays($now);
-            // foreach($join2 as $i){
-            //     $i->totalTagihan = $i->tagihan + ($i->)
-            // }
+
+            $waktuSkrng=Carbon::now();
+            foreach($join2 as $i){
+                // $product = Product::findOrFail($i->id); INII
+                $tr_tgl = Carbon::parse($i->tr_tgl);
+                $waktuSimpan = $tr_tgl->diffInDays($waktuSkrng);
+                if($i->tr_ket == "Memasukkan Barang"){
+                    $i->tagihan_sebelumnya = $i->tagihan;
+                    // $product->tagihan_sebelumnya = $i->tagihan; INII
+                    $i->tagihan = $i->tagihan_sebelumnya + ($i->bysewa*$i->stok_sebelumnya*($waktuSimpan+1))+($i->tr_jml*$i->bybongkar);
+                    // $product->tagihan = $i->tagihan; INII
+                }
+                else {
+                    $i->tagihan = $i->tagihan + ($i->bysewa*$i->stok_sebelumnya*($waktuSimpan+1))+($i->tr_jml*$i->bymuat);
+                }
+                $i->waktuSimpan = $waktuSimpan;
+                // $product->save(); INII
+            }
             return Datatables::of($join2)->make(true);
         
     }
