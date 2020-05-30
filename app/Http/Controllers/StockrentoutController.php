@@ -69,6 +69,7 @@ class StockrentoutController extends Controller
         Stockrentout::create($request->all());
         
         $product = Product::findOrFail($request->product_id);
+        $product->jumlah_sebelumnya = $product->jumlah;
         $product->jumlah -= $request->jumlah;
         $product->save();
        
@@ -123,6 +124,7 @@ class StockrentoutController extends Controller
         $Stockrentout->update($request->all());
 
         $product = Product::findOrFail($request->product_id);
+        $product->jumlah_sebelumnya = $product->jumlah;
         $product->jumlah -= $request->jumlah;
         $product->update();
 

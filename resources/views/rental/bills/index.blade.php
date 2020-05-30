@@ -36,7 +36,7 @@
                     <th>Nama Barang</th>
                     <th>Stok Barang</th>
                     <th>Update Stok</th>
-                    <th>Tagihan Sewa</th>
+                    <!-- <th>Tagihan Sewa</th> -->
                     <th>Keterangan</th>
                     <!-- <th>Cetak Tagihan</th> -->
                 </tr>
@@ -69,7 +69,7 @@
                 {data: 'barang', name: 'barang'},
                 {data: 'stok', name: 'stok'},
                 {data: 'tr_jml', name: 'tr_jml'},
-                {data: 'totalTagihan', name: 'totalTagihan'},
+                // {data: 'totalTagihan', name: 'totalTagihan'},
                 {data: 'tr_ket', name: 'tr_ket'},
 
             ]

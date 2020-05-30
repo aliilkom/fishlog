@@ -19,7 +19,6 @@ class CreateDailyStoksTable extends Migration
             $table->integer('product_id')->unsigned();
             $table->date('tanggal')->nullable();
             $table->integer('dstok')->nullable();
-            $table->integer('')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
